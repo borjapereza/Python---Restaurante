@@ -364,73 +364,11 @@
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkFixed">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="width_request">141</property>
-                        <property name="height_request">20</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Selecciona una mesa:</property>
-                      </object>
-                      <packing>
-                        <property name="x">26</property>
-                        <property name="y">12</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBox">
-                        <property name="width_request">235</property>
-                        <property name="height_request">20</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                      <packing>
-                        <property name="x">26</property>
-                        <property name="y">42</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="width_request">251</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Numero de Comensales de esa mesa: </property>
-                      </object>
-                      <packing>
-                        <property name="x">279</property>
-                        <property name="y">14</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">10</property>
-                      </object>
-                      <packing>
-                        <property name="x">498</property>
-                        <property name="y">14</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <child>
                       <object class="GtkFixed">
                         <property name="height_request">400</property>
@@ -445,8 +383,8 @@
                             <property name="margin_right">20</property>
                           </object>
                           <packing>
-                            <property name="x">20</property>
-                            <property name="y">102</property>
+                            <property name="x">18</property>
+                            <property name="y">169</property>
                           </packing>
                         </child>
                         <child>
@@ -458,7 +396,7 @@
                           </object>
                           <packing>
                             <property name="x">22</property>
-                            <property name="y">163</property>
+                            <property name="y">230</property>
                           </packing>
                         </child>
                         <child>
@@ -470,8 +408,8 @@
                             <property name="label" translatable="yes">Comanda</property>
                           </object>
                           <packing>
-                            <property name="x">21</property>
-                            <property name="y">79</property>
+                            <property name="x">10</property>
+                            <property name="y">138</property>
                           </packing>
                         </child>
                         <child>
@@ -483,8 +421,7 @@
                             <property name="label" translatable="yes">Precio</property>
                           </object>
                           <packing>
-                            <property name="x">13</property>
-                            <property name="y">142</property>
+                            <property name="y">203</property>
                           </packing>
                         </child>
                         <child>
@@ -540,6 +477,57 @@
                             <property name="y">300</property>
                           </packing>
                         </child>
+                        <child>
+                          <object class="GtkComboBox">
+                            <property name="width_request">228</property>
+                            <property name="height_request">28</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                          </object>
+                          <packing>
+                            <property name="x">19</property>
+                            <property name="y">54</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="width_request">141</property>
+                            <property name="height_request">24</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Selecciona una mesa:</property>
+                          </object>
+                          <packing>
+                            <property name="x">20</property>
+                            <property name="y">23</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="width_request">44</property>
+                            <property name="height_request">25</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">10</property>
+                          </object>
+                          <packing>
+                            <property name="x">261</property>
+                            <property name="y">97</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="width_request">251</property>
+                            <property name="height_request">25</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Numero de Comensales de esa mesa: </property>
+                          </object>
+                          <packing>
+                            <property name="x">16</property>
+                            <property name="y">97</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -551,14 +539,32 @@
                       <object class="GtkScrolledWindow">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
                         <property name="shadow_type">in</property>
                         <child>
                           <object class="GtkTreeView">
-                            <property name="height_request">400</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="tooltip_text" translatable="yes">
+</property>
                             <child internal-child="selection">
                               <object class="GtkTreeSelection"/>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="IdProducto">
+                                <property name="title" translatable="yes">Id Producto</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="NombreProducto">
+                                <property name="title" translatable="yes">Nombre Producto</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="PrecioProducto">
+                                <property name="title" translatable="yes">Precio Producto</property>
+                              </object>
                             </child>
                           </object>
                         </child>
