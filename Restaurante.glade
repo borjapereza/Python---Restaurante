@@ -191,11 +191,11 @@
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="stock">gtk-missing-image</property>
+                        <property name="pixbuf">img/MesasIndividiales3.png</property>
                       </object>
                       <packing>
-                        <property name="x">8</property>
-                        <property name="y">78</property>
+                        <property name="x">9</property>
+                        <property name="y">121</property>
                       </packing>
                     </child>
                     <child>
@@ -204,7 +204,19 @@
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="stock">gtk-missing-image</property>
+                        <property name="pixbuf">img/MesasIndividiales3.png</property>
+                      </object>
+                      <packing>
+                        <property name="x">130</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="pixbuf">img/MesasIndividiales3.png</property>
                       </object>
                     </child>
                     <child>
@@ -213,8 +225,12 @@
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="stock">gtk-missing-image</property>
+                        <property name="pixbuf">img/MesasIndividiales3.png</property>
                       </object>
+                      <packing>
+                        <property name="x">130</property>
+                        <property name="y">129</property>
+                      </packing>
                     </child>
                     <child>
                       <object class="GtkImage">
@@ -222,8 +238,12 @@
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="stock">gtk-missing-image</property>
+                        <property name="pixbuf">img/MesasIndividiales2.png</property>
                       </object>
+                      <packing>
+                        <property name="x">265</property>
+                        <property name="y">116</property>
+                      </packing>
                     </child>
                     <child>
                       <object class="GtkImage">
@@ -231,8 +251,11 @@
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="stock">gtk-missing-image</property>
+                        <property name="pixbuf">img/MesasIndividiales2.png</property>
                       </object>
+                      <packing>
+                        <property name="x">259</property>
+                      </packing>
                     </child>
                     <child>
                       <object class="GtkImage">
@@ -240,8 +263,11 @@
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="stock">gtk-missing-image</property>
+                        <property name="pixbuf">img/MesasIndividiales1.png</property>
                       </object>
+                      <packing>
+                        <property name="y">259</property>
+                      </packing>
                     </child>
                     <child>
                       <object class="GtkImage">
@@ -249,17 +275,12 @@
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="stock">gtk-missing-image</property>
+                        <property name="pixbuf">img/MesasIndividiales1.png</property>
                       </object>
-                    </child>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="stock">gtk-missing-image</property>
-                      </object>
+                      <packing>
+                        <property name="x">215</property>
+                        <property name="y">246</property>
+                      </packing>
                     </child>
                   </object>
                   <packing>
@@ -289,10 +310,13 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="focus_on_click">False</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_right">10</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
+                        <property name="padding">20</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
