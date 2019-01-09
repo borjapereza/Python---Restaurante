@@ -2,10 +2,74 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkListStore" id="ListaComandas">
+    <columns>
+      <!-- column-name ID -->
+      <column type="gint"/>
+      <!-- column-name IDCamarero -->
+      <column type="gint"/>
+      <!-- column-name Comanda -->
+      <column type="gchararray"/>
+      <!-- column-name Cantidad -->
+      <column type="gint"/>
+      <!-- column-name Precio -->
+      <column type="gfloat"/>
+    </columns>
+  </object>
+  <object class="GtkListStore" id="ListaMesas">
+    <columns>
+      <!-- column-name Codigo Mesa -->
+      <column type="gint"/>
+      <!-- column-name Camarero -->
+      <column type="gchararray"/>
+      <!-- column-name Pagado -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">img/MesasIndividiales3.png</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">img/MesasIndividiales3.png</property>
+  </object>
+  <object class="GtkImage" id="image3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">img/MesasIndividiales3.png</property>
+  </object>
+  <object class="GtkImage" id="image4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">img/MesasIndividiales3.png</property>
+  </object>
+  <object class="GtkImage" id="image5">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">img/MesasIndividiales2.png</property>
+  </object>
+  <object class="GtkImage" id="image6">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">img/MesasIndividiales2.png</property>
+  </object>
+  <object class="GtkImage" id="image7">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">img/MesasIndividiales1.png</property>
+  </object>
+  <object class="GtkImage" id="image8">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">img/MesasIndividiales1.png</property>
+  </object>
   <object class="GtkWindow" id="VentanaPrincipal">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Restaurante</property>
-    <property name="default_width">1000</property>
+    <property name="default_width">1220</property>
     <signal name="destroy" handler="on_VentanaPrincipal_destroy" swapped="no"/>
     <child>
       <placeholder/>
@@ -186,100 +250,132 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkButton" id="BTNMesa4">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixbuf">img/MesasIndividiales3.png</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="margin_right">10</property>
+                        <property name="image">image4</property>
+                        <property name="relief">none</property>
+                        <signal name="clicked" handler="on_BTNMesa4_clicked" swapped="no"/>
                       </object>
                       <packing>
-                        <property name="x">9</property>
-                        <property name="y">121</property>
+                        <property name="x">530</property>
+                        <property name="y">80</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkButton" id="BTNMesa3">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixbuf">img/MesasIndividiales3.png</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">image3</property>
+                        <property name="relief">none</property>
+                        <signal name="clicked" handler="on_BTNMesa3_clicked" swapped="no"/>
                       </object>
                       <packing>
-                        <property name="x">130</property>
+                        <property name="x">355</property>
+                        <property name="y">80</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkButton" id="BTNMesa1">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixbuf">img/MesasIndividiales3.png</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixbuf">img/MesasIndividiales3.png</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">image1</property>
+                        <property name="relief">none</property>
+                        <signal name="clicked" handler="on_BTNMesa1_clicked" swapped="no"/>
                       </object>
                       <packing>
-                        <property name="x">130</property>
-                        <property name="y">129</property>
+                        <property name="x">5</property>
+                        <property name="y">80</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkButton" id="BTNMesa8">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixbuf">img/MesasIndividiales2.png</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">image7</property>
+                        <property name="relief">none</property>
+                        <signal name="clicked" handler="on_BTNMesa8_clicked" swapped="no"/>
                       </object>
                       <packing>
-                        <property name="x">265</property>
-                        <property name="y">116</property>
+                        <property name="x">275</property>
+                        <property name="y">400</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkButton" id="BTNMesa6">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixbuf">img/MesasIndividiales2.png</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">image6</property>
+                        <property name="relief">none</property>
+                        <signal name="clicked" handler="on_BTNMesa6_clicked" swapped="no"/>
                       </object>
                       <packing>
-                        <property name="x">259</property>
+                        <property name="x">210</property>
+                        <property name="y">236</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkButton" id="BTNMesa7">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixbuf">img/MesasIndividiales1.png</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">image8</property>
+                        <property name="relief">none</property>
+                        <signal name="clicked" handler="on_BTNMesa7_clicked" swapped="no"/>
                       </object>
                       <packing>
-                        <property name="y">259</property>
+                        <property name="x">5</property>
+                        <property name="y">400</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkButton" id="BTNMesa5">
                         <property name="width_request">100</property>
                         <property name="height_request">80</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="pixbuf">img/MesasIndividiales1.png</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">image5</property>
+                        <property name="relief">none</property>
+                        <signal name="clicked" handler="on_BTNMesa5_clicked" swapped="no"/>
                       </object>
                       <packing>
-                        <property name="x">215</property>
-                        <property name="y">246</property>
+                        <property name="x">5</property>
+                        <property name="y">236</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="BTNMesa2">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">image2</property>
+                        <property name="relief">none</property>
+                        <signal name="clicked" handler="on_BTNMesa2_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="x">180</property>
+                        <property name="y">80</property>
                       </packing>
                     </child>
                   </object>
@@ -297,7 +393,9 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Seleccion de mesa y añadir comanda</property>
+                        <property name="margin_top">20</property>
+                        <property name="label" translatable="yes">Seleccion de mesa, un camarero
+y márcala como ocupada. </property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -306,17 +404,87 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBox" id="cmbMesa">
+                      <object class="GtkFixed">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="focus_on_click">False</property>
-                        <property name="margin_left">10</property>
-                        <property name="margin_right">10</property>
+                        <child>
+                          <object class="GtkComboBoxText" id="CMBMesas">
+                            <property name="name">CMBMesas</property>
+                            <property name="width_request">400</property>
+                            <property name="height_request">28</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="active">0</property>
+                            <items>
+                              <item translatable="yes">Escoge una mesa</item>
+                              <item translatable="yes">Mesa 1 (4 Personas)</item>
+                              <item translatable="yes">Mesa 2 (4 Personas)</item>
+                              <item translatable="yes">Mesa 3 (4 Personas)</item>
+                              <item translatable="yes">Mesa 4 (4 Personas)</item>
+                              <item translatable="yes">Mesa 5 (8 Personas)</item>
+                              <item translatable="yes">Mesa 6 (8 Personas)</item>
+                              <item translatable="yes">Mesa 7 (10 Personas)</item>
+                              <item translatable="yes">Mesa 8 (10 Personas)</item>
+                            </items>
+                          </object>
+                          <packing>
+                            <property name="x">65</property>
+                            <property name="y">24</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNOcuparMesa">
+                            <property name="label" translatable="yes">Ocupar Mesa</property>
+                            <property name="width_request">100</property>
+                            <property name="height_request">2</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="margin_top">20</property>
+                            <property name="margin_bottom">20</property>
+                            <signal name="clicked" handler="on_BTNOcuparMesa_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="x">17</property>
+                            <property name="y">111</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNRealizarPago">
+                            <property name="label" translatable="yes">Realizar Pago</property>
+                            <property name="width_request">105</property>
+                            <property name="height_request">29</property>
+                            <property name="visible">True</property>
+                            <property name="sensitive">False</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="margin_top">20</property>
+                          </object>
+                          <packing>
+                            <property name="x">291</property>
+                            <property name="y">111</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNVaciarMesa">
+                            <property name="label" translatable="yes">Vaciar Mesa</property>
+                            <property name="width_request">100</property>
+                            <property name="height_request">29</property>
+                            <property name="visible">True</property>
+                            <property name="sensitive">False</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="margin_top">20</property>
+                          </object>
+                          <packing>
+                            <property name="x">401</property>
+                            <property name="y">111</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="padding">20</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -327,11 +495,27 @@
                         <property name="shadow_type">in</property>
                         <property name="min_content_height">400</property>
                         <child>
-                          <object class="GtkTreeView">
+                          <object class="GtkTreeView" id="treeMesas">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="model">ListaMesas</property>
                             <child internal-child="selection">
                               <object class="GtkTreeSelection"/>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="codigoMesa">
+                                <property name="title" translatable="yes">Codigo Mesa</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="camarero">
+                                <property name="title" translatable="yes">Camarero</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="Pagado">
+                                <property name="title" translatable="yes">Pagado</property>
+                              </object>
                             </child>
                           </object>
                         </child>
@@ -384,19 +568,19 @@
                           </object>
                           <packing>
                             <property name="x">18</property>
-                            <property name="y">169</property>
+                            <property name="y">164</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkEntry">
-                            <property name="width_request">166</property>
+                            <property name="width_request">209</property>
                             <property name="height_request">29</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </object>
                           <packing>
-                            <property name="x">22</property>
-                            <property name="y">230</property>
+                            <property name="x">18</property>
+                            <property name="y">228</property>
                           </packing>
                         </child>
                         <child>
@@ -485,7 +669,7 @@
                             <property name="can_focus">False</property>
                           </object>
                           <packing>
-                            <property name="x">19</property>
+                            <property name="x">18</property>
                             <property name="y">54</property>
                           </packing>
                         </child>
@@ -548,22 +732,33 @@
                             <property name="can_focus">True</property>
                             <property name="tooltip_text" translatable="yes">
 </property>
+                            <property name="model">ListaComandas</property>
                             <child internal-child="selection">
                               <object class="GtkTreeSelection"/>
                             </child>
                             <child>
-                              <object class="GtkTreeViewColumn" id="IdProducto">
-                                <property name="title" translatable="yes">Id Producto</property>
+                              <object class="GtkTreeViewColumn" id="IDProducto">
+                                <property name="title" translatable="yes">IDProducto</property>
                               </object>
                             </child>
                             <child>
-                              <object class="GtkTreeViewColumn" id="NombreProducto">
-                                <property name="title" translatable="yes">Nombre Producto</property>
+                              <object class="GtkTreeViewColumn" id="IDServicio">
+                                <property name="title" translatable="yes">IDServicio</property>
                               </object>
                             </child>
                             <child>
-                              <object class="GtkTreeViewColumn" id="PrecioProducto">
-                                <property name="title" translatable="yes">Precio Producto</property>
+                              <object class="GtkTreeViewColumn" id="Comanda">
+                                <property name="title" translatable="yes">Comanda</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="Cantidad">
+                                <property name="title" translatable="yes">Cantidad</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="Precio">
+                                <property name="title" translatable="yes">Precio</property>
                               </object>
                             </child>
                           </object>
