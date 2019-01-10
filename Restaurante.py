@@ -52,45 +52,67 @@ class Restaurante:
                'on_BTNMesa7_clicked': self.clickMesa7,
                'on_BTNMesa8_clicked': self.clickMesa8,
                'on_BTNOcuparMesa_clicked': self.OcuparMesa,
+               'on_treeMesas_cursor_changed': self.SeleccionarMesa,
+               'on_BTNVaciarMesa_clicked': self.VaciarMesa,
                }
 
         b.connect_signals(dic)
-        BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+        self.CMBMesas.set_sensitive(False)
+        BBDD.cargaMesasInicio(self.ListaMesas, self.treeMesas, self.image1, self.image2, self.image3, self.image4,
+                              self.image5, self.image6, self.image7, self.image8, self.BTNMesa1, self.BTNMesa2,
+                              self.BTNMesa3, self.BTNMesa4, self.BTNMesa5, self.BTNMesa6, self.BTNMesa7,
+                              self.BTNMesa8)
         self.venprincipal.show()
 
     def btnsal(self, data=None):
         Gtk.main_quit()
 
     def clickMesa1(self, witget, data=None):
-        self.image1.set_from_file("img/MesasIndividiales3Azul.png");
+        self.BTNOcuparMesa.set_sensitive(True)
+        self.BTNRealizarPago.set_sensitive(False)
+        self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(1)
 
     def clickMesa2(self, witget, data=None):
-        self.image2.set_from_file("img/MesasIndividiales3Azul.png");
+        self.BTNOcuparMesa.set_sensitive(True)
+        self.BTNRealizarPago.set_sensitive(False)
+        self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(2)
 
     def clickMesa3(self, witget, data=None):
-        self.image3.set_from_file("img/MesasIndividiales3Azul.png");
+        self.BTNOcuparMesa.set_sensitive(True)
+        self.BTNRealizarPago.set_sensitive(False)
+        self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(3)
 
     def clickMesa4(self, witget, data=None):
-        self.image4.set_from_file("img/MesasIndividiales3Azul.png");
+        self.BTNOcuparMesa.set_sensitive(True)
+        self.BTNRealizarPago.set_sensitive(False)
+        self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(4)
 
     def clickMesa5(self, witget, data=None):
-        self.image5.set_from_file("img/MesasIndividiales2Azul.png");
+        self.BTNOcuparMesa.set_sensitive(True)
+        self.BTNRealizarPago.set_sensitive(False)
+        self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(5)
 
     def clickMesa6(self, witget, data=None):
-        self.image6.set_from_file("img/MesasIndividiales2Azul.png");
+        self.BTNOcuparMesa.set_sensitive(True)
+        self.BTNRealizarPago.set_sensitive(False)
+        self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(6)
 
     def clickMesa7(self, witget, data=None):
-        self.image8.set_from_file("img/MesasIndividiales1Azul.png");
+        self.BTNOcuparMesa.set_sensitive(True)
+        self.BTNRealizarPago.set_sensitive(False)
+        self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(7)
 
     def clickMesa8(self, witget, data=None):
-        self.image7.set_from_file("img/MesasIndividiales1Azul.png");
+        self.BTNOcuparMesa.set_sensitive(True)
+        self.BTNRealizarPago.set_sensitive(False)
+        self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(8)
 
     def OcuparMesa(self, witget, data=None):
@@ -98,38 +120,73 @@ class Restaurante:
             print("ERROR: Selecciona una Mesa")
         else:
             if self.CMBMesas.get_active_text() == "Mesa 1 (4 Personas)":
-                mesa = (1,4)
-                BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
-            if self.CMBMesas.get_active_text() == "Mesa 1 (4 Personas)":
-                mesa = (2,4)
-                BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
-            if self.CMBMesas.get_active_text() == "Mesa 1 (4 Personas)":
-                mesa = (3,4)
-                BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
-            if self.CMBMesas.get_active_text() == "Mesa 1 (4 Personas)":
-                mesa = (4,4)
-                BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
-            if self.CMBMesas.get_active_text() == "Mesa 1 (4 Personas)":
-                mesa = (5,8)
-                BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
-            if self.CMBMesas.get_active_text() == "Mesa 1 (4 Personas)":
-                mesa = (6,8)
-                BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
-            if self.CMBMesas.get_active_text() == "Mesa 1 (4 Personas)":
-                mesa = (7,10)
-                BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
-            if self.CMBMesas.get_active_text() == "Mesa 1 (4 Personas)":
-                mesa = (8,10)
+                self.image1.set_from_file("img/MesasIndividiales3Azul.png");
+                self.CMBMesas.set_active(1)
+                mesa = (1, 4)
                 BBDD.altaMesa(mesa)
                 BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
 
+            if self.CMBMesas.get_active_text() == "Mesa 2 (4 Personas)":
+                self.image2.set_from_file("img/MesasIndividiales3Azul.png");
+                self.CMBMesas.set_active(2)
+                mesa = (2, 4)
+                BBDD.altaMesa(mesa)
+                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+
+            if self.CMBMesas.get_active_text() == "Mesa 3 (4 Personas)":
+                self.image3.set_from_file("img/MesasIndividiales3Azul.png");
+                self.CMBMesas.set_active(3)
+                mesa = (3, 4)
+                BBDD.altaMesa(mesa)
+                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+
+            if self.CMBMesas.get_active_text() == "Mesa 4 (4 Personas)":
+                self.image4.set_from_file("img/MesasIndividiales3Azul.png");
+                self.CMBMesas.set_active(4)
+                mesa = (4, 4)
+                BBDD.altaMesa(mesa)
+                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+
+            if self.CMBMesas.get_active_text() == "Mesa 5 (8 Personas)":
+                self.image5.set_from_file("img/MesasIndividiales2Azul.png");
+                self.CMBMesas.set_active(5)
+                mesa = (5, 8)
+                BBDD.altaMesa(mesa)
+                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+
+            if self.CMBMesas.get_active_text() == "Mesa 6 (8 Personas)":
+                self.image6.set_from_file("img/MesasIndividiales2Azul.png");
+                self.CMBMesas.set_active(6)
+                mesa = (6, 8)
+                BBDD.altaMesa(mesa)
+                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+
+            if self.CMBMesas.get_active_text() == "Mesa 7 (10 Personas)":
+                self.image8.set_from_file("img/MesasIndividiales1Azul.png");
+                self.CMBMesas.set_active(7)
+                mesa = (7, 10)
+                BBDD.altaMesa(mesa)
+                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+
+            if self.CMBMesas.get_active_text() == "Mesa 8 (10 Personas)":
+                self.image7.set_from_file("img/MesasIndividiales1Azul.png");
+                self.CMBMesas.set_active(8)
+                mesa = (8, 10)
+                BBDD.altaMesa(mesa)
+                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+
+    def SeleccionarMesa(self, witget, data=None):
+        model, iter = self.treeMesas.get_selection().get_selected()
+
+        if iter != None:
+            idMesa = model.get_value(iter, 0)
+            self.CMBMesas.set_active(idMesa)
+            self.BTNOcuparMesa.set_sensitive(False)
+            self.BTNRealizarPago.set_sensitive(True)
+            self.BTNVaciarMesa.set_sensitive(True)
+
+    def VaciarMesa(self, witget, data=None):
+        mesa = (8, 10)
 
 if __name__ == '__main__':
     main = Restaurante()

@@ -18,12 +18,10 @@
   </object>
   <object class="GtkListStore" id="ListaMesas">
     <columns>
-      <!-- column-name Codigo Mesa -->
+      <!-- column-name Codigo -->
       <column type="gint"/>
-      <!-- column-name Camarero -->
-      <column type="gchararray"/>
-      <!-- column-name Pagado -->
-      <column type="gchararray"/>
+      <!-- column-name maxComensales -->
+      <column type="gint"/>
     </columns>
   </object>
   <object class="GtkImage" id="image1">
@@ -499,22 +497,30 @@ y márcala como ocupada. </property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="model">ListaMesas</property>
+                            <signal name="cursor-changed" handler="on_treeMesas_cursor_changed" swapped="no"/>
                             <child internal-child="selection">
                               <object class="GtkTreeSelection"/>
                             </child>
                             <child>
                               <object class="GtkTreeViewColumn" id="codigoMesa">
                                 <property name="title" translatable="yes">Codigo Mesa</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="codigoMesa1"/>
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
                               </object>
                             </child>
                             <child>
-                              <object class="GtkTreeViewColumn" id="camarero">
-                                <property name="title" translatable="yes">Camarero</property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn" id="Pagado">
-                                <property name="title" translatable="yes">Pagado</property>
+                              <object class="GtkTreeViewColumn" id="MaxPersonas">
+                                <property name="title" translatable="yes">Maximo de personas</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="MaxPersonas2"/>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
+                                  </attributes>
+                                </child>
                               </object>
                             </child>
                           </object>
