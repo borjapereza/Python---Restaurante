@@ -6,7 +6,10 @@ import gi
 import BBDD
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gdk,Gtk
+from os.path import abspath, dirname, join
+
+WHERE_AM_I = abspath(dirname(__file__))
 
 
 class Restaurante:
@@ -15,8 +18,13 @@ class Restaurante:
         b = Gtk.Builder()
         b.add_from_file('Restaurante.glade')
 
+        # Cargar el aspecto de la  app
+        self.set_style()
+
         # Objetos Ventana Mesas
         self.venprincipal = b.get_object('VentanaPrincipal')
+        self.WinLogCamarero = b.get_object('WinLogCamarero')
+        self.WinAñadirComidas = b.get_object('WinAñadirComidas')
         self.BTNMesa1 = b.get_object('BTNMesa1')
         self.image1 = b.get_object('image1')
         self.BTNMesa2 = b.get_object('BTNMesa2')
@@ -39,6 +47,28 @@ class Restaurante:
         self.BTNVaciarMesa = b.get_object('BTNVaciarMesa')
         self.treeMesas = b.get_object('treeMesas')
         self.ListaMesas = b.get_object('ListaMesas')
+        self.CMBMesasServicios = b.get_object('CMBMesasServicios')
+        self.lblNumeroComensales = b.get_object('lblNumeroComensales')
+        self.BTNNuevasComandas = b.get_object('BTNNuevasComandas')
+        self.BTNAñadirComanda = b.get_object('BTNAñadirComanda')
+        self.BTNCancelarComanda = b.get_object('BTNCancelarComanda')
+        self.BTNRealizarFactura = b.get_object('BTNRealizarFactura')
+        self.etPass = b.get_object('etPass')
+        self.etUser = b.get_object('etUser')
+        self.BTNAñadir = b.get_object('BTNAñadir')
+        self.BTNSalirAñadir = b.get_object('BTNSalirAñadir')
+        self.etNombrePlato = b.get_object('etNombrePlato')
+        self.etPrecioPlato = b.get_object('etPrecioPlato')
+        self.CMBComidas = b.get_object('CMBComidas')
+        self.etCantidadComida = b.get_object('etCantidadComida')
+        self.ListaComandas = b.get_object('ListaComandas')
+        self.treeServicios = b.get_object('treeServicios')
+        self.CMBMesaFactura =b.get_object('CMBMesaFactura')
+        self.treeClientes = b.get_object('treeClientes')
+        self.treeFactuMesas=b.get_object('treeFactuMesas')
+        self.listClientes = b.get_object('listClientes')
+        self.listFactuMesa = b.get_object('listFactuMesa')
+        self.WinAñadirCliente = b.get_object('WinAñadirCliente')
 
         # Diccionario
         # Eventos
@@ -54,6 +84,18 @@ class Restaurante:
                'on_BTNOcuparMesa_clicked': self.OcuparMesa,
                'on_treeMesas_cursor_changed': self.SeleccionarMesa,
                'on_BTNVaciarMesa_clicked': self.VaciarMesa,
+               'on_WinLogCamarero_destroy': self.btnsal,
+               'on_BTNSalirLog_clicked': self.btnsal,
+               'on_BTNEnterLog_clicked': self.btnLog,
+               'on_WinAñadirComidas_destroy': self.btnSalirAñadir,
+               'on_BTNSalirAñadir_clicked': self.btnSalirAñadir,
+               'on_BTNNuevasComandas_clicked': self.WinAñadirComida,
+               'on_BTNAñadir_clicked': self.ADDComida,
+               'on_BTNAñadirComanda_clicked': self.on_BTNAñadirComanda_clicked,
+               'on_BTNCancelarComanda_clicked': self.on_BTNCancelarComanda_clicked,
+               'on_BTNRealizarFactura_clicked': self.on_BTNRealizarFactura_clicked,
+               'on_WinAñadirCliente_destroy' :self.onSalirAñadirCliente,
+               'on_btnAñadirCliente_clicked': self.ventanaAñadirCLiente,
                }
 
         b.connect_signals(dic)
@@ -62,10 +104,45 @@ class Restaurante:
                               self.image5, self.image6, self.image7, self.image8, self.BTNMesa1, self.BTNMesa2,
                               self.BTNMesa3, self.BTNMesa4, self.BTNMesa5, self.BTNMesa6, self.BTNMesa7,
                               self.BTNMesa8)
+        BBDD.CargarCMBComida(self.CMBComidas)
+        BBDD.CargarClientes(self.listClientes, self.treeClientes)
         self.venprincipal.show()
+        self.WinLogCamarero.show()
+
+        # Cargamos el tema oscuro para nuestra app
+    def set_style(self):
+        provider = Gtk.CssProvider()
+        provider.load_from_path(join(WHERE_AM_I, 'gtk-dark.css'))
+        screen = Gdk.Display.get_default_screen(Gdk.Display.get_default())
+        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION = 600
+        Gtk.StyleContext.add_provider_for_screen(
+            screen, provider,
+            GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
 
     def btnsal(self, data=None):
         Gtk.main_quit()
+
+    def btnLog(self, data=None):
+        BBDD.comprobarUser(self.etUser.get_text(), self.etPass.get_text(), self.WinLogCamarero)
+        self.nombreCamarero = self.etUser.get_text()
+
+    def btnSalirAñadir(self, data=None):
+        self.WinAñadirComidas.hide()
+
+    def WinAñadirComida(self, data=None):
+        self.WinAñadirComidas.show()
+
+    def ventanaAñadirCLiente(self, data=None):
+        self.WinAñadirCliente.show()
+
+    def onSalirAñadirCliente(self, data=None):
+        self.WinAñadirCliente.hide()
+
+    def ADDComida(self, data=None):
+        BBDD.añadirComida(self.etNombrePlato.get_text(), self.etPrecioPlato.get_text(), self.WinAñadirComidas)
+        self.etNombrePlato.set_text("")
+        self.etPrecioPlato.set_text("")
 
     def clickMesa1(self, witget, data=None):
         self.BTNOcuparMesa.set_sensitive(True)
@@ -120,73 +197,151 @@ class Restaurante:
             print("ERROR: Selecciona una Mesa")
         else:
             if self.CMBMesas.get_active_text() == "Mesa 1 (4 Personas)":
-                self.image1.set_from_file("img/MesasIndividiales3Azul.png");
+                self.image1.set_from_file("img/MesasIndividiales3Azul.png")
                 self.CMBMesas.set_active(1)
                 mesa = (1, 4)
                 BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+                BBDD.crearFactura(mesa, self.nombreCamarero)
 
             if self.CMBMesas.get_active_text() == "Mesa 2 (4 Personas)":
-                self.image2.set_from_file("img/MesasIndividiales3Azul.png");
+                self.image2.set_from_file("img/MesasIndividiales3Azul.png")
                 self.CMBMesas.set_active(2)
                 mesa = (2, 4)
                 BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+                BBDD.crearFactura(mesa, self.nombreCamarero)
 
             if self.CMBMesas.get_active_text() == "Mesa 3 (4 Personas)":
-                self.image3.set_from_file("img/MesasIndividiales3Azul.png");
+                self.image3.set_from_file("img/MesasIndividiales3Azul.png")
                 self.CMBMesas.set_active(3)
                 mesa = (3, 4)
                 BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+                BBDD.crearFactura(mesa, self.nombreCamarero)
 
             if self.CMBMesas.get_active_text() == "Mesa 4 (4 Personas)":
-                self.image4.set_from_file("img/MesasIndividiales3Azul.png");
+                self.image4.set_from_file("img/MesasIndividiales3Azul.png")
                 self.CMBMesas.set_active(4)
                 mesa = (4, 4)
                 BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+                BBDD.crearFactura(mesa, self.nombreCamarero)
 
             if self.CMBMesas.get_active_text() == "Mesa 5 (8 Personas)":
-                self.image5.set_from_file("img/MesasIndividiales2Azul.png");
+                self.image5.set_from_file("img/MesasIndividiales2Azul.png")
                 self.CMBMesas.set_active(5)
                 mesa = (5, 8)
                 BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+                BBDD.crearFactura(mesa, self.nombreCamarero)
 
             if self.CMBMesas.get_active_text() == "Mesa 6 (8 Personas)":
-                self.image6.set_from_file("img/MesasIndividiales2Azul.png");
+                self.image6.set_from_file("img/MesasIndividiales2Azul.png")
                 self.CMBMesas.set_active(6)
                 mesa = (6, 8)
                 BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+                BBDD.crearFactura(mesa, self.nombreCamarero)
 
             if self.CMBMesas.get_active_text() == "Mesa 7 (10 Personas)":
-                self.image8.set_from_file("img/MesasIndividiales1Azul.png");
+                self.image8.set_from_file("img/MesasIndividiales1Azul.png")
                 self.CMBMesas.set_active(7)
                 mesa = (7, 10)
                 BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+                BBDD.crearFactura(mesa, self.nombreCamarero)
 
             if self.CMBMesas.get_active_text() == "Mesa 8 (10 Personas)":
-                self.image7.set_from_file("img/MesasIndividiales1Azul.png");
+                self.image7.set_from_file("img/MesasIndividiales1Azul.png")
                 self.CMBMesas.set_active(8)
                 mesa = (8, 10)
                 BBDD.altaMesa(mesa)
-                BBDD.cargaMesas(self.ListaMesas, self.treeMesas)
+                BBDD.crearFactura(mesa, self.nombreCamarero)
+
+            BBDD.cargaMesas(self.ListaMesas, self.treeMesas, self.BTNMesa1, self.BTNMesa2,
+                            self.BTNMesa3, self.BTNMesa4, self.BTNMesa5, self.BTNMesa6, self.BTNMesa7,
+                            self.BTNMesa8)
 
     def SeleccionarMesa(self, witget, data=None):
         model, iter = self.treeMesas.get_selection().get_selected()
 
         if iter != None:
             idMesa = model.get_value(iter, 0)
+            numeroPersonas = model.get_value(iter, 1)
             self.CMBMesas.set_active(idMesa)
+            self.CMBMesasServicios.set_active(idMesa)
+            self.CMBMesaFactura.set_active(idMesa)
+            self.lblNumeroComensales.set_text(str(numeroPersonas))
+            BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa)
+            BBDD.CargarFacturasMesa(self.listFactuMesa, self.treeFactuMesas, idMesa)
             self.BTNOcuparMesa.set_sensitive(False)
             self.BTNRealizarPago.set_sensitive(True)
             self.BTNVaciarMesa.set_sensitive(True)
 
     def VaciarMesa(self, witget, data=None):
-        mesa = (8, 10)
+        model, iter = self.treeMesas.get_selection().get_selected()
+
+        idMesa = model.get_value(iter, 0)
+        BBDD.borrarFactura(idMesa)
+        BBDD.vaciarMesa(idMesa)
+        BBDD.cargaMesasInicio(self.ListaMesas, self.treeMesas, self.image1, self.image2, self.image3, self.image4,
+                              self.image5, self.image6, self.image7, self.image8, self.BTNMesa1, self.BTNMesa2,
+                              self.BTNMesa3, self.BTNMesa4, self.BTNMesa5, self.BTNMesa6, self.BTNMesa7,
+                              self.BTNMesa8)
+
+    def on_BTNAñadirComanda_clicked(self, witget, data=None):
+
+        idmesa = self.CMBMesasServicios.get_active()
+        nombreServicio = self.CMBComidas.get_active_text()
+        cantidad = self.etCantidadComida.get_text()
+        nombreMesa = self.CMBMesasServicios.get_active_text()
+        if nombreMesa == "Mesa 1":
+            idMesa = 1
+        if nombreMesa == "Mesa 2":
+            idMesa = 2
+        if nombreMesa == "Mesa 3":
+            idMesa = 3
+        if nombreMesa == "Mesa 4":
+            idMesa = 4
+        if nombreMesa == "Mesa 5":
+            idMesa = 5
+        if nombreMesa == "Mesa 6":
+            idMesa = 6
+        if nombreMesa == "Mesa 7":
+            idMesa = 7
+        if nombreMesa == "Mesa 8":
+            idMesa = 8
+
+        if cantidad == "":
+            print("NO HAY NADA")
+        else:
+            BBDD.AñadirServicioFacturaLista(idmesa, nombreServicio, cantidad)
+            self.etCantidadComida.set_text("")
+            BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa)
+
+    def on_BTNCancelarComanda_clicked(self, witget, data=None):
+        model, iter = self.treeServicios.get_selection().get_selected()
+
+        idFactura = model.get_value(iter, 0)
+        idServicio = model.get_value(iter, 1)
+        nombreMesa = self.CMBMesasServicios.get_active_text()
+        if nombreMesa == "Mesa 1":
+            idMesa = 1
+        if nombreMesa == "Mesa 2":
+            idMesa = 2
+        if nombreMesa == "Mesa 3":
+            idMesa = 3
+        if nombreMesa == "Mesa 4":
+            idMesa = 4
+        if nombreMesa == "Mesa 5":
+            idMesa = 5
+        if nombreMesa == "Mesa 6":
+            idMesa = 6
+        if nombreMesa == "Mesa 7":
+            idMesa = 7
+        if nombreMesa == "Mesa 8":
+            idMesa = 8
+
+        BBDD.borrarServicio(idServicio, idFactura)
+        BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa)
+
+    def on_BTNRealizarFactura_clicked(self):
+        print(20)
+
 
 if __name__ == '__main__':
     main = Restaurante()
