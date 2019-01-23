@@ -76,6 +76,7 @@ class Restaurante:
         self.edNombre = b.get_object('edNombre')
         self.edApellidos = b.get_object('edApellidos')
         self.edDireccion = b.get_object('edDireccion')
+        self.notebook =b.get_object('notebook')
 
         # Diccionario
         # Eventos
@@ -107,6 +108,8 @@ class Restaurante:
                'on_cmbProvincia_changed':self.on_cmbProvincia_changed,
                'on_btnAgregarCliente_clicked':self.on_btnAgregarCliente_clicked,
                'on_btnModificarCliente_clicked':self.on_btnModificarCliente_clicked,
+               'on_btnGenerarFactura_clicked':self.on_btnGenerarFactura_clicked,
+               'on_BTNRealizarPago_clicked':self.on_BTNRealizarFactura_clicked,
                }
 
         b.connect_signals(dic)
@@ -356,7 +359,7 @@ class Restaurante:
         BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa)
 
     def on_BTNRealizarFactura_clicked(self, witget, data=None):
-        print(20)
+        self.notebook.set_current_page(2)
 
     def on_cmbProvincia_changed(self, witget, data=None):
         self.cmbCiudad.remove_all()
@@ -406,6 +409,10 @@ class Restaurante:
         dni = model.get_value(iter, 0)
         BBDD.BorrarCliente(dni)
         BBDD.CargarClientes(self.listClientes, self.treeClientes)
+
+    def on_btnGenerarFactura_clicked(self, witget, data=None):
+        print(20)
+        self.notebook.set_current_page(0)
 
 if __name__ == '__main__':
     main = Restaurante()
