@@ -317,3 +317,12 @@ def BorrarCliente(dni):
     except sqlite3.OperationalError as e:
         print(e)
         conex.rollback()
+
+
+def AñadirClienteFactura(dni,idf):
+    try:
+        cur.execute("UPDATE FACTURA set DniCli=?,Pagada=Si WHERE Pagada=No AND IdFactura=?", (dni,idf))
+        conex.commit()
+    except sqlite3.OperationalError as e:
+        print(e)
+        conex.rollback()
