@@ -297,3 +297,23 @@ def CargarClientes(listaClientes,treeclientes):
 def CargaClientes(listaClientes, treeclientes, fila):
     listaClientes.append(fila)
     treeclientes.show()
+
+
+def guardarCliente(dni, nombre, apellidos, direcc, provincia, ciudad):
+    fila =dni,apellidos,nombre,direcc,provincia,ciudad
+    try:
+        cur.execute("INSERT INTO CLIENTE(DNI,APELLIDOS,NOMBRE,DIRECCION,PROVINCIA,CIUDAD) values(?,?,?,?,?,?)", fila)
+        conex.commit()
+    except sqlite3.OperationalError as e:
+        print(e)
+        conex.rollback()
+
+
+def BorrarCliente(dni):
+    try:
+        cur.execute("DELETE FROM CLIENTE "
+                    "where (DNI=?)", (dni,))
+        conex.commit()
+    except sqlite3.OperationalError as e:
+        print(e)
+        conex.rollback()

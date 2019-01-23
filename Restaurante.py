@@ -4,9 +4,10 @@
 
 import gi
 import BBDD
+import BBDD2
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gdk,Gtk
+from gi.repository import Gdk, Gtk
 from os.path import abspath, dirname, join
 
 WHERE_AM_I = abspath(dirname(__file__))
@@ -63,12 +64,18 @@ class Restaurante:
         self.etCantidadComida = b.get_object('etCantidadComida')
         self.ListaComandas = b.get_object('ListaComandas')
         self.treeServicios = b.get_object('treeServicios')
-        self.CMBMesaFactura =b.get_object('CMBMesaFactura')
+        self.CMBMesaFactura = b.get_object('CMBMesaFactura')
         self.treeClientes = b.get_object('treeClientes')
-        self.treeFactuMesas=b.get_object('treeFactuMesas')
+        self.treeFactuMesas = b.get_object('treeFactuMesas')
         self.listClientes = b.get_object('listClientes')
         self.listFactuMesa = b.get_object('listFactuMesa')
         self.WinAñadirCliente = b.get_object('WinAñadirCliente')
+        self.cmbProvincia = b.get_object('cmbProvincia')
+        self.cmbCiudad = b.get_object('cmbCiudad')
+        self.edDNI = b.get_object('edDNI')
+        self.edNombre = b.get_object('edNombre')
+        self.edApellidos = b.get_object('edApellidos')
+        self.edDireccion = b.get_object('edDireccion')
 
         # Diccionario
         # Eventos
@@ -94,8 +101,12 @@ class Restaurante:
                'on_BTNAñadirComanda_clicked': self.on_BTNAñadirComanda_clicked,
                'on_BTNCancelarComanda_clicked': self.on_BTNCancelarComanda_clicked,
                'on_BTNRealizarFactura_clicked': self.on_BTNRealizarFactura_clicked,
-               'on_WinAñadirCliente_destroy' :self.onSalirAñadirCliente,
+               'on_WinAñadirCliente_destroy': self.onSalirAñadirCliente,
                'on_btnAñadirCliente_clicked': self.ventanaAñadirCLiente,
+               'on_btnCancelarCliente_clicked': self.onSalirAñadirCliente,
+               'on_cmbProvincia_changed':self.on_cmbProvincia_changed,
+               'on_btnAgregarCliente_clicked':self.on_btnAgregarCliente_clicked,
+               'on_btnModificarCliente_clicked':self.on_btnModificarCliente_clicked,
                }
 
         b.connect_signals(dic)
@@ -105,11 +116,14 @@ class Restaurante:
                               self.BTNMesa3, self.BTNMesa4, self.BTNMesa5, self.BTNMesa6, self.BTNMesa7,
                               self.BTNMesa8)
         BBDD.CargarCMBComida(self.CMBComidas)
+        BBDD2.CargarProvincias(self.cmbProvincia)
+        self.cmbCiudad.set_sensitive(False)
         BBDD.CargarClientes(self.listClientes, self.treeClientes)
         self.venprincipal.show()
         self.WinLogCamarero.show()
 
         # Cargamos el tema oscuro para nuestra app
+
     def set_style(self):
         provider = Gtk.CssProvider()
         provider.load_from_path(join(WHERE_AM_I, 'gtk-dark.css'))
@@ -141,6 +155,8 @@ class Restaurante:
 
     def ADDComida(self, data=None):
         BBDD.añadirComida(self.etNombrePlato.get_text(), self.etPrecioPlato.get_text(), self.WinAñadirComidas)
+        self.CMBComidas.remove_all()
+        BBDD.CargarCMBComida(self.CMBComidas)
         self.etNombrePlato.set_text("")
         self.etPrecioPlato.set_text("")
 
@@ -339,9 +355,57 @@ class Restaurante:
         BBDD.borrarServicio(idServicio, idFactura)
         BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa)
 
-    def on_BTNRealizarFactura_clicked(self):
+    def on_BTNRealizarFactura_clicked(self, witget, data=None):
         print(20)
 
+    def on_cmbProvincia_changed(self, witget, data=None):
+        self.cmbCiudad.remove_all()
+        nombre = self.cmbProvincia.get_active_text()
+        BBDD2.CargarMunicipios(self.cmbCiudad,nombre)
+
+    def on_btnAgregarCliente_clicked(self, witget, data=None):
+        nombre = self.edNombre.get_text()
+        apellidos = self.edApellidos.get_text()
+        direcc = self.edDireccion.get_text()
+        dni = self.edDNI.get_text()
+        ciudad = self.cmbCiudad.get_active_text()
+        provincia = self.cmbProvincia.get_active_text()
+
+        valido = self.validoDNI(dni)
+        if valido:
+            BBDD.guardarCliente(dni,nombre,apellidos,direcc,provincia,ciudad)
+            BBDD.CargarClientes(self.listClientes,self.treeClientes)
+            self.edNombre.set_text("")
+            self.edApellidos.set_text("")
+            self.edDireccion.set_text("")
+            self.edDNI.set_text("")
+            self.cmbCiudad.remove_all()
+            self.WinAñadirCliente.hide()
+        else:
+            print("DNI NO VALIDO")
+
+    def validoDNI(self, dni):
+
+        tabla = "TRWAGMYFPDXBNJZSQVHLCKE"
+        dig_ext = "XYZ"
+        reemp_dig_ext = {'X': '0', 'Y': '1', 'Z': '2'}
+        numeros = "1234567890"
+        dni = str(dni).upper()
+        # dni="12345678Z"
+        if len(dni) == 9:
+            dig_control = dni[8]
+            dni = dni[:8]
+            if dni[0] in dig_ext:
+                dni = dni.replace(dni[0], reemp_dig_ext[dni[0]])
+            return len(dni) == len([n for n in dni if n in numeros]) and tabla[int(dni) % 23] == dig_control
+        return False
+
+    def on_btnModificarCliente_clicked(self, witget, data=None):
+        model, iter = self.treeClientes.get_selection().get_selected()
+
+        dni = model.get_value(iter, 0)
+        BBDD.BorrarCliente(dni)
+        BBDD.CargarClientes(self.listClientes, self.treeClientes)
 
 if __name__ == '__main__':
     main = Restaurante()
