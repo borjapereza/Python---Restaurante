@@ -5,6 +5,7 @@
 import gi
 import BBDD
 import BBDD2
+import Informe
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gdk, Gtk
@@ -110,6 +111,7 @@ class Restaurante:
                'on_btnModificarCliente_clicked':self.on_btnModificarCliente_clicked,
                'on_btnGenerarFactura_clicked':self.on_btnGenerarFactura_clicked,
                'on_BTNRealizarPago_clicked':self.on_BTNRealizarFactura_clicked,
+               'on_CMBMesaFactura_changed':self.on_CMBMesaFactura_changed,
                }
 
         b.connect_signals(dic)
@@ -302,6 +304,17 @@ class Restaurante:
                               self.BTNMesa3, self.BTNMesa4, self.BTNMesa5, self.BTNMesa6, self.BTNMesa7,
                               self.BTNMesa8)
 
+
+    def VaciarMesaPagada(self, witget, data=None):
+        model, iter = self.treeMesas.get_selection().get_selected()
+
+        idMesa = model.get_value(iter, 0)
+        BBDD.vaciarMesa(idMesa)
+        BBDD.cargaMesasInicio(self.ListaMesas, self.treeMesas, self.image1, self.image2, self.image3, self.image4,
+                              self.image5, self.image6, self.image7, self.image8, self.BTNMesa1, self.BTNMesa2,
+                              self.BTNMesa3, self.BTNMesa4, self.BTNMesa5, self.BTNMesa6, self.BTNMesa7,
+                              self.BTNMesa8)
+
     def on_BTNAñadirComanda_clicked(self, witget, data=None):
 
         idmesa = self.CMBMesasServicios.get_active()
@@ -411,8 +424,20 @@ class Restaurante:
         BBDD.CargarClientes(self.listClientes, self.treeClientes)
 
     def on_btnGenerarFactura_clicked(self, witget, data=None):
-        print(20)
-        self.notebook.set_current_page(0)
+        model1, iter1 = self.treeClientes.get_selection().get_selected()
+        model2, iter2 = self.treeFactuMesas.get_selection().get_selected()
+        idMesa= self.CMBMesaFactura.get_active()
+
+        dni = model1.get_value(iter1, 0)
+        idfactu = model2.get_value(iter2, 1)
+        BBDD.AñadirClienteFactura(dni, idfactu)
+        BBDD.CargarFacturasMesa(self.listFactuMesa, self.treeFactuMesas, idMesa)
+        Restaurante.VaciarMesaPagada(self, witget)
+        Informe.factura(idfactu)
+
+    def on_CMBMesaFactura_changed(self, witget, data=None):
+        idMesa = self.CMBMesaFactura.get_active()
+        BBDD.CargarFacturasMesa(self.listFactuMesa, self.treeFactuMesas, idMesa)
 
 if __name__ == '__main__':
     main = Restaurante()

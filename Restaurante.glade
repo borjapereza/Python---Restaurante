@@ -809,7 +809,7 @@ Realfood</property>
           </packing>
         </child>
         <child>
-          <object class="GtkNotebook">
+          <object class="GtkNotebook" id="notebook">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <child>
@@ -1035,6 +1035,7 @@ y márcala como ocupada. </property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="margin_top">20</property>
+                            <signal name="clicked" handler="on_BTNRealizarPago_clicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="x">291</property>
@@ -1476,7 +1477,6 @@ y márcala como ocupada. </property>
                     <property name="width_request">270</property>
                     <property name="height_request">30</property>
                     <property name="visible">True</property>
-                    <property name="sensitive">False</property>
                     <property name="can_focus">False</property>
                     <items>
                       <item translatable="yes">Selecciona una mesa</item>
@@ -1489,6 +1489,7 @@ y márcala como ocupada. </property>
                       <item translatable="yes">Mesa 7</item>
                       <item translatable="yes">Mesa 8</item>
                     </items>
+                    <signal name="changed" handler="on_CMBMesaFactura_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">26</property>
@@ -1536,6 +1537,7 @@ Factura</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_btnGenerarFactura_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">1061</property>

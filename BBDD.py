@@ -321,7 +321,7 @@ def BorrarCliente(dni):
 
 def AñadirClienteFactura(dni,idf):
     try:
-        cur.execute("UPDATE FACTURA set DniCli=?,Pagada=Si WHERE Pagada=No AND IdFactura=?", (dni,idf))
+        cur.execute("UPDATE FACTURA set DniCli='"+str(dni)+"',Pagada='Si' WHERE Pagada='No' AND IdFactura="+str(idf)+"")
         conex.commit()
     except sqlite3.OperationalError as e:
         print(e)
