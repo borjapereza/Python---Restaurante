@@ -245,9 +245,19 @@ def AñadirServicioFacturaLista(idmesa,nombreServicio,cantidad):
         conex.rollback()
 
 def CargaServiciosMesa(ListaComandas,treeServicios,idMesa):
+
+    try:
+        cur.execute("SELECT max(idfactura) from factura where idmesa="+str(idMesa)+"")
+        cursor = cur.fetchall()
+        for row in cursor:
+            idFactu = row[0]
+    except sqlite3.OperationalError as e:
+        print(e)
+        conex.rollback()
+
     try:
         ListaComandas.clear()
-        cur.execute("SELECT LF.IdFactura,LF.IdServicio,S.Servicio,LF.Cantidad,S.Preciounidad FROM LINEAFACTURA as LF INNER JOIN Servicio as S ON LF.IdServicio=S.IdServicio INNER JOIN FACTURA AS F ON LF.IDFACTURA = F.IDFACTURA WHERE (F.Idmesa="+str(idMesa)+")")
+        cur.execute("SELECT LF.IdFactura,LF.IdServicio,S.Servicio,LF.Cantidad,S.Preciounidad FROM LINEAFACTURA as LF INNER JOIN Servicio as S ON LF.IdServicio=S.IdServicio INNER JOIN FACTURA AS F ON LF.IDFACTURA = F.IDFACTURA WHERE (F.Idmesa="+str(idMesa)+")and LF.IdFactura="+str(idFactu)+"")
         cursor = cur.fetchall()
         for row in cursor:
             CargarServicioLista(ListaComandas, treeServicios, row)
