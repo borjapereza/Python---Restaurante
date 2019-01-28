@@ -641,6 +641,7 @@ Realfood</property>
   <object class="GtkWindow" id="VentanaPrincipal">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Restaurante</property>
+    <property name="window_position">center</property>
     <property name="default_width">1220</property>
     <signal name="destroy" handler="on_VentanaPrincipal_destroy" swapped="no"/>
     <child>
@@ -659,129 +660,6 @@ Realfood</property>
               <object class="GtkMenuItem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Ficheiro</property>
-                <property name="use_underline">True</property>
-                <child type="submenu">
-                  <object class="GtkMenu">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-new</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-open</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-save</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-save-as</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSeparatorMenuItem">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-quit</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Editar</property>
-                <property name="use_underline">True</property>
-                <child type="submenu">
-                  <object class="GtkMenu">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-cut</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-copy</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-paste</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem">
-                        <property name="label">gtk-delete</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Ver</property>
-                <property name="use_underline">True</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_Axuda</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -789,12 +667,13 @@ Realfood</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem">
+                      <object class="GtkImageMenuItem" id="btnSobre">
                         <property name="label">gtk-about</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_btnSobre_activate" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -1084,6 +963,7 @@ y márcala como ocupada. </property>
                             <child>
                               <object class="GtkTreeViewColumn" id="codigoMesa">
                                 <property name="title" translatable="yes">Codigo Mesa</property>
+                                <property name="expand">True</property>
                                 <child>
                                   <object class="GtkCellRendererText" id="codigoMesa1"/>
                                   <attributes>
@@ -1095,6 +975,7 @@ y márcala como ocupada. </property>
                             <child>
                               <object class="GtkTreeViewColumn" id="MaxPersonas">
                                 <property name="title" translatable="yes">Maximo de personas</property>
+                                <property name="expand">True</property>
                                 <child>
                                   <object class="GtkCellRendererText" id="MaxPersonas2"/>
                                   <attributes>
@@ -1107,7 +988,7 @@ y márcala como ocupada. </property>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
+                        <property name="expand">True</property>
                         <property name="fill">True</property>
                         <property name="position">2</property>
                       </packing>
@@ -1119,6 +1000,11 @@ y márcala como ocupada. </property>
                   </packing>
                 </child>
               </object>
+              <packing>
+                <property name="tab_expand">True</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
+              </packing>
             </child>
             <child type="tab">
               <object class="GtkLabel" id="noteMesas">
@@ -1354,6 +1240,7 @@ y márcala como ocupada. </property>
                             <child>
                               <object class="GtkTreeViewColumn" id="IDFactura">
                                 <property name="title" translatable="yes">IDFactura</property>
+                                <property name="expand">True</property>
                                 <child>
                                   <object class="GtkCellRendererText" id="idfactura"/>
                                   <attributes>
@@ -1365,6 +1252,7 @@ y márcala como ocupada. </property>
                             <child>
                               <object class="GtkTreeViewColumn" id="IDServicio">
                                 <property name="title" translatable="yes">IDServicio</property>
+                                <property name="expand">True</property>
                                 <child>
                                   <object class="GtkCellRendererText" id="idservicio"/>
                                   <attributes>
@@ -1376,6 +1264,7 @@ y márcala como ocupada. </property>
                             <child>
                               <object class="GtkTreeViewColumn" id="Comanda">
                                 <property name="title" translatable="yes">Comanda</property>
+                                <property name="expand">True</property>
                                 <child>
                                   <object class="GtkCellRendererText" id="comanda"/>
                                   <attributes>
@@ -1387,6 +1276,7 @@ y márcala como ocupada. </property>
                             <child>
                               <object class="GtkTreeViewColumn" id="Cantidad">
                                 <property name="title" translatable="yes">Cantidad</property>
+                                <property name="expand">True</property>
                                 <child>
                                   <object class="GtkCellRendererText" id="cantidad"/>
                                   <attributes>
@@ -1398,6 +1288,7 @@ y márcala como ocupada. </property>
                             <child>
                               <object class="GtkTreeViewColumn" id="Precio">
                                 <property name="title" translatable="yes">Precio</property>
+                                <property name="expand">True</property>
                                 <child>
                                   <object class="GtkCellRendererText" id="precio"/>
                                   <attributes>
@@ -1425,6 +1316,9 @@ y márcala como ocupada. </property>
               </object>
               <packing>
                 <property name="position">1</property>
+                <property name="tab_expand">True</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
               </packing>
             </child>
             <child type="tab">
@@ -1582,6 +1476,8 @@ Cliente</property>
                     <property name="height_request">443</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
                     <property name="shadow_type">in</property>
                     <child>
                       <object class="GtkTreeView" id="treeClientes">
@@ -1594,6 +1490,7 @@ Cliente</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="dni">
                             <property name="title" translatable="yes">DNI</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererText" id="dni1"/>
                               <attributes>
@@ -1605,6 +1502,7 @@ Cliente</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="apellidos">
                             <property name="title" translatable="yes">Apellidos</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererText" id="apellidos1"/>
                               <attributes>
@@ -1616,6 +1514,7 @@ Cliente</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="nombre">
                             <property name="title" translatable="yes">Nombre</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererText" id="nombre1"/>
                               <attributes>
@@ -1627,6 +1526,7 @@ Cliente</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="direccion">
                             <property name="title" translatable="yes">Direccion</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererText" id="direccion1"/>
                               <attributes>
@@ -1638,6 +1538,7 @@ Cliente</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="provincia">
                             <property name="title" translatable="yes">Provincia</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererText" id="provincia1"/>
                               <attributes>
@@ -1649,6 +1550,7 @@ Cliente</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="ciudad">
                             <property name="title" translatable="yes">Ciudad</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererText" id="ciudad1"/>
                               <attributes>
@@ -1671,18 +1573,22 @@ Cliente</property>
                     <property name="height_request">443</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
                     <property name="shadow_type">in</property>
                     <child>
                       <object class="GtkTreeView" id="treeFactuMesas">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="model">listFactuMesa</property>
+                        <signal name="cursor-changed" handler="on_treeFactuMesas_cursor_changed" swapped="no"/>
                         <child internal-child="selection">
                           <object class="GtkTreeSelection"/>
                         </child>
                         <child>
                           <object class="GtkTreeViewColumn" id="IDcamarero">
                             <property name="title" translatable="yes">IDCamarero</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererText" id="idcamarero"/>
                               <attributes>
@@ -1694,6 +1600,7 @@ Cliente</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="IDFactura1">
                             <property name="title" translatable="yes">IDFactura</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererText" id="idfactura1"/>
                               <attributes>
@@ -1705,6 +1612,7 @@ Cliente</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="fecha">
                             <property name="title" translatable="yes">Fecha</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererText" id="fecha1"/>
                               <attributes>
@@ -1716,6 +1624,7 @@ Cliente</property>
                         <child>
                           <object class="GtkTreeViewColumn" id="pagado">
                             <property name="title" translatable="yes">Pagado</property>
+                            <property name="expand">True</property>
                             <child>
                               <object class="GtkCellRendererText" id="pagado1"/>
                               <attributes>
@@ -1735,6 +1644,9 @@ Cliente</property>
               </object>
               <packing>
                 <property name="position">2</property>
+                <property name="tab_expand">True</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
               </packing>
             </child>
             <child type="tab">
@@ -1754,6 +1666,60 @@ Cliente</property>
             <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAboutDialog" id="winSobre">
+    <property name="can_focus">False</property>
+    <property name="window_position">center</property>
+    <property name="type_hint">dialog</property>
+    <property name="program_name">Restaurante Python</property>
+    <property name="version">1.0</property>
+    <property name="copyright" translatable="yes">Alfonso Fernández Álvarez - 2019</property>
+    <property name="comments" translatable="yes">Proyecto realizado durante las clases de Python del instituto IES de Teis en la clase de desarrollo de interfaces. El proyecto cuenta con automatizaciones y la función de creación de PDF's.</property>
+    <property name="authors">Alfonso Fernández Álvarez</property>
+    <property name="artists">Alfonso Fernández Álvarez
+UnSplash
+Flaticon</property>
+    <property name="logo_icon_name">face-monkey</property>
+    <property name="license_type">gpl-3-0</property>
+    <signal name="destroy" handler="on_winSobre_destroy" swapped="no"/>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="btnSalirSobre">
+                <property name="label" translatable="yes">Exit</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_btnSalirSobre_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>

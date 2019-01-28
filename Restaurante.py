@@ -77,7 +77,8 @@ class Restaurante:
         self.edNombre = b.get_object('edNombre')
         self.edApellidos = b.get_object('edApellidos')
         self.edDireccion = b.get_object('edDireccion')
-        self.notebook =b.get_object('notebook')
+        self.notebook = b.get_object('notebook')
+        self.winSobre = b.get_object('winSobre')
 
         # Diccionario
         # Eventos
@@ -106,12 +107,16 @@ class Restaurante:
                'on_WinAñadirCliente_destroy': self.onSalirAñadirCliente,
                'on_btnAñadirCliente_clicked': self.ventanaAñadirCLiente,
                'on_btnCancelarCliente_clicked': self.onSalirAñadirCliente,
-               'on_cmbProvincia_changed':self.on_cmbProvincia_changed,
-               'on_btnAgregarCliente_clicked':self.on_btnAgregarCliente_clicked,
-               'on_btnModificarCliente_clicked':self.on_btnModificarCliente_clicked,
-               'on_btnGenerarFactura_clicked':self.on_btnGenerarFactura_clicked,
-               'on_BTNRealizarPago_clicked':self.on_BTNRealizarFactura_clicked,
-               'on_CMBMesaFactura_changed':self.on_CMBMesaFactura_changed,
+               'on_cmbProvincia_changed': self.on_cmbProvincia_changed,
+               'on_btnAgregarCliente_clicked': self.on_btnAgregarCliente_clicked,
+               'on_btnModificarCliente_clicked': self.on_btnModificarCliente_clicked,
+               'on_btnGenerarFactura_clicked': self.on_btnGenerarFactura_clicked,
+               'on_BTNRealizarPago_clicked': self.on_BTNRealizarFactura_clicked,
+               'on_CMBMesaFactura_changed': self.on_CMBMesaFactura_changed,
+               'on_treeFactuMesas_cursor_changed': self.on_treeFactuMesas_cursor_changed,
+               'on_btnSalirSobre_clicked': self.on_btnSalirSobre_clicked,
+               'on_winSobre_destroy':self.on_btnSalirSobre_clicked,
+               'on_btnSobre_activate':self.on_btnSobre_activate,
                }
 
         b.connect_signals(dic)
@@ -145,6 +150,12 @@ class Restaurante:
     def btnLog(self, data=None):
         BBDD.comprobarUser(self.etUser.get_text(), self.etPass.get_text(), self.WinLogCamarero)
         self.nombreCamarero = self.etUser.get_text()
+
+    def on_btnSobre_activate(self, data=None):
+        self.winSobre.show()
+
+    def on_btnSalirSobre_clicked(self, data=None):
+        self.winSobre.hide()
 
     def btnSalirAñadir(self, data=None):
         self.WinAñadirComidas.hide()
@@ -304,11 +315,9 @@ class Restaurante:
                               self.BTNMesa3, self.BTNMesa4, self.BTNMesa5, self.BTNMesa6, self.BTNMesa7,
                               self.BTNMesa8)
 
-
     def VaciarMesaPagada(self, witget, data=None):
-        model, iter = self.treeMesas.get_selection().get_selected()
 
-        idMesa = model.get_value(iter, 0)
+        idMesa = self.CMBMesaFactura.get_active()
         BBDD.vaciarMesa(idMesa)
         BBDD.cargaMesasInicio(self.ListaMesas, self.treeMesas, self.image1, self.image2, self.image3, self.image4,
                               self.image5, self.image6, self.image7, self.image8, self.BTNMesa1, self.BTNMesa2,
@@ -377,7 +386,7 @@ class Restaurante:
     def on_cmbProvincia_changed(self, witget, data=None):
         self.cmbCiudad.remove_all()
         nombre = self.cmbProvincia.get_active_text()
-        BBDD2.CargarMunicipios(self.cmbCiudad,nombre)
+        BBDD2.CargarMunicipios(self.cmbCiudad, nombre)
 
     def on_btnAgregarCliente_clicked(self, witget, data=None):
         nombre = self.edNombre.get_text()
@@ -389,8 +398,8 @@ class Restaurante:
 
         valido = self.validoDNI(dni)
         if valido:
-            BBDD.guardarCliente(dni,nombre,apellidos,direcc,provincia,ciudad)
-            BBDD.CargarClientes(self.listClientes,self.treeClientes)
+            BBDD.guardarCliente(dni, nombre, apellidos, direcc, provincia, ciudad)
+            BBDD.CargarClientes(self.listClientes, self.treeClientes)
             self.edNombre.set_text("")
             self.edApellidos.set_text("")
             self.edDireccion.set_text("")
@@ -426,7 +435,7 @@ class Restaurante:
     def on_btnGenerarFactura_clicked(self, witget, data=None):
         model1, iter1 = self.treeClientes.get_selection().get_selected()
         model2, iter2 = self.treeFactuMesas.get_selection().get_selected()
-        idMesa= self.CMBMesaFactura.get_active()
+        idMesa = self.CMBMesaFactura.get_active()
 
         dni = model1.get_value(iter1, 0)
         idfactu = model2.get_value(iter2, 1)
@@ -437,7 +446,15 @@ class Restaurante:
 
     def on_CMBMesaFactura_changed(self, witget, data=None):
         idMesa = self.CMBMesaFactura.get_active()
+        self.CMBMesas.set_active(idMesa)
+        self.CMBMesasServicios.set_active(idMesa)
         BBDD.CargarFacturasMesa(self.listFactuMesa, self.treeFactuMesas, idMesa)
+
+    def on_treeFactuMesas_cursor_changed(self, witget, data=None):
+        if iter != None:
+            idMesa = self.CMBMesaFactura.get_active()
+            BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa)
+
 
 if __name__ == '__main__':
     main = Restaurante()

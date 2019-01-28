@@ -81,7 +81,7 @@ def factura(idfactura):
 
         cabecera(cser)
         pie(cser)
-        cur.execute('select idventa, s.servicio, cantidad, s.precio from comandas c, servicios s where c.idfactura = ? and s.Id = c.idservicio', (idfactura,))
+        cur.execute('select c.idventa, s.servicio, c.cantidad, s.preciounidad from LineaFactura as c inner join servicio as s on s.IdServicio = c.IdServicio  where c.idfactura = ?', (idfactura,))
         listado = cur.fetchall()
         conexion.commit()
         textlistado = 'Factura'
@@ -101,8 +101,8 @@ def factura(idfactura):
 
 
                 var1 = int(registro[2])
-                var2 = registro[3].split()[0]
-                var2 = locale.atof(var2)
+                var2 = registro[3]
+                var2 = var2
                 var2 = round(float(var2), 2)
                 subtotal = var1*var2
             total = total + subtotal
