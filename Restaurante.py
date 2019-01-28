@@ -79,6 +79,7 @@ class Restaurante:
         self.edDireccion = b.get_object('edDireccion')
         self.notebook = b.get_object('notebook')
         self.winSobre = b.get_object('winSobre')
+        self.winErrores = b.get_object('winErrores')
 
         # Diccionario
         # Eventos
@@ -115,8 +116,10 @@ class Restaurante:
                'on_CMBMesaFactura_changed': self.on_CMBMesaFactura_changed,
                'on_treeFactuMesas_cursor_changed': self.on_treeFactuMesas_cursor_changed,
                'on_btnSalirSobre_clicked': self.on_btnSalirSobre_clicked,
-               'on_winSobre_destroy':self.on_btnSalirSobre_clicked,
-               'on_btnSobre_activate':self.on_btnSobre_activate,
+               'on_winSobre_destroy': self.on_btnSalirSobre_clicked,
+               'on_btnSobre_activate': self.on_btnSobre_activate,
+               'on_winErrores' : self.on_winErrores,
+               'on_winErrores_destroy': self.on_winErrores_destroy,
                }
 
         b.connect_signals(dic)
@@ -156,6 +159,12 @@ class Restaurante:
 
     def on_btnSalirSobre_clicked(self, data=None):
         self.winSobre.hide()
+
+    def on_winErrores(self, data=None):
+        self.winErrores.show()
+
+    def on_winErrores_destroy(self, data=None):
+        self.winErrores.hide()
 
     def btnSalirAñadir(self, data=None):
         self.WinAñadirComidas.hide()
