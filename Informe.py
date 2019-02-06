@@ -31,7 +31,8 @@ def cabecera(cser):
 
         cser.line(50, 820, 525, 820)
         cser.line(50, 745, 525, 745)
-        textnom = 'RESTAURANTE TEIS'
+        cser.line(50, 700, 525, 700)
+        textnom = 'RealFooters Restaurant'
         textdir = 'Calle Maxwell S/N- Vigo'
         texttlfo = '555 55 55 55'
         cser.drawString(255, 795, textnom)
@@ -48,31 +49,6 @@ def pie(cser):
 
     except:
         print('erros pie')
-
-def reportservicios():
-    try:
-        cser = canvas.Canvas('servicios.pdf', pagesize=A4)
-        cabecera(cser)
-        pie(cser)
-        textlistado = 'LISTADO DE SERVICIOS'
-        cser.drawString(255, 705, textlistado)
-        cser.line(50,700,525,700)
-        x = 50
-        y = 680
-        listado = servicios.mostrarservicios()
-        for registro in listado:
-            for i in range(3):
-                cser.drawString(x,y,str(registro[i]))
-                x = x + 220
-            y = y -20
-            x = 50
-        cser.showPage()
-        cser.save()
-        dir = os.getcwd()
-        os.system('/usr/bin/xdg-open ' + dir + '/servicios.pdf')
-
-    except:
-        print('error en informe')
 
 
 def factura(idfactura):

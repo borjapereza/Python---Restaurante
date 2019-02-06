@@ -24,6 +24,1086 @@
       <column type="gint"/>
     </columns>
   </object>
+  <object class="GtkWindow" id="VentanaPrincipal">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Restaurante</property>
+    <property name="window_position">center</property>
+    <property name="default_width">0</property>
+    <signal name="destroy" handler="on_VentanaPrincipal_destroy" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkMenuBar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkMenuItem">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_Axuda</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="btnSobre">
+                        <property name="label">gtk-about</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_btnSobre_activate" swapped="no"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkNotebook" id="notebook">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="pixbuf">img/cocina.png</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkPaned">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="margin_bottom">13</property>
+                    <child>
+                      <object class="GtkFixed">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <child>
+                          <object class="GtkButton" id="BTNMesa4">
+                            <property name="width_request">100</property>
+                            <property name="height_request">80</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image4</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="on_BTNMesa4_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="x">530</property>
+                            <property name="y">80</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNMesa3">
+                            <property name="width_request">100</property>
+                            <property name="height_request">80</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image3</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="on_BTNMesa3_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="x">355</property>
+                            <property name="y">80</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNMesa1">
+                            <property name="width_request">100</property>
+                            <property name="height_request">80</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image1</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="on_BTNMesa1_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="x">5</property>
+                            <property name="y">80</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNMesa8">
+                            <property name="width_request">100</property>
+                            <property name="height_request">80</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image7</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="on_BTNMesa8_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="x">275</property>
+                            <property name="y">400</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNMesa6">
+                            <property name="width_request">100</property>
+                            <property name="height_request">80</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image6</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="on_BTNMesa6_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="x">210</property>
+                            <property name="y">236</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNMesa7">
+                            <property name="width_request">100</property>
+                            <property name="height_request">80</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image8</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="on_BTNMesa7_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="x">5</property>
+                            <property name="y">400</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNMesa5">
+                            <property name="width_request">100</property>
+                            <property name="height_request">80</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image5</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="on_BTNMesa5_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="x">5</property>
+                            <property name="y">236</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNMesa2">
+                            <property name="width_request">100</property>
+                            <property name="height_request">80</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image2</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="on_BTNMesa2_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="x">180</property>
+                            <property name="y">80</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="resize">False</property>
+                        <property name="shrink">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="margin_top">20</property>
+                            <property name="label" translatable="yes">Seleccion de mesa
+y márcala como ocupada. </property>
+                            <attributes>
+                              <attribute name="weight" value="heavy"/>
+                              <attribute name="scale" value="2"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkFixed">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <child>
+                              <object class="GtkComboBoxText" id="CMBMesas">
+                                <property name="name">CMBMesas</property>
+                                <property name="width_request">400</property>
+                                <property name="height_request">28</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="active">0</property>
+                                <items>
+                                  <item translatable="yes">Escoge una mesa</item>
+                                  <item translatable="yes">Mesa 1 (4 Personas)</item>
+                                  <item translatable="yes">Mesa 2 (4 Personas)</item>
+                                  <item translatable="yes">Mesa 3 (4 Personas)</item>
+                                  <item translatable="yes">Mesa 4 (4 Personas)</item>
+                                  <item translatable="yes">Mesa 5 (8 Personas)</item>
+                                  <item translatable="yes">Mesa 6 (8 Personas)</item>
+                                  <item translatable="yes">Mesa 7 (10 Personas)</item>
+                                  <item translatable="yes">Mesa 8 (10 Personas)</item>
+                                </items>
+                              </object>
+                              <packing>
+                                <property name="x">65</property>
+                                <property name="y">24</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="BTNOcuparMesa">
+                                <property name="label" translatable="yes">Ocupar Mesa</property>
+                                <property name="width_request">100</property>
+                                <property name="height_request">2</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="margin_top">20</property>
+                                <property name="margin_bottom">20</property>
+                                <signal name="clicked" handler="on_BTNOcuparMesa_clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="x">17</property>
+                                <property name="y">111</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="BTNRealizarPago">
+                                <property name="label" translatable="yes">Realizar Pago</property>
+                                <property name="width_request">105</property>
+                                <property name="height_request">29</property>
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="margin_top">20</property>
+                                <signal name="clicked" handler="on_BTNRealizarPago_clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="x">291</property>
+                                <property name="y">111</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="BTNVaciarMesa">
+                                <property name="label" translatable="yes">Vaciar Mesa</property>
+                                <property name="width_request">100</property>
+                                <property name="height_request">29</property>
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="margin_top">20</property>
+                                <signal name="clicked" handler="on_BTNVaciarMesa_clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="x">401</property>
+                                <property name="y">111</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkScrolledWindow">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="shadow_type">in</property>
+                            <property name="min_content_height">400</property>
+                            <child>
+                              <object class="GtkTreeView" id="treeMesas">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="model">ListaMesas</property>
+                                <property name="search_column">0</property>
+                                <signal name="cursor-changed" handler="on_treeMesas_cursor_changed" swapped="no"/>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection"/>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn" id="codigoMesa">
+                                    <property name="title" translatable="yes">Codigo Mesa</property>
+                                    <property name="expand">True</property>
+                                    <child>
+                                      <object class="GtkCellRendererText" id="codigoMesa1"/>
+                                      <attributes>
+                                        <attribute name="text">0</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn" id="MaxPersonas">
+                                    <property name="title" translatable="yes">Maximo de personas</property>
+                                    <property name="expand">True</property>
+                                    <child>
+                                      <object class="GtkCellRendererText" id="MaxPersonas2"/>
+                                      <attributes>
+                                        <attribute name="text">1</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="resize">True</property>
+                        <property name="shrink">True</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="tab_expand">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="noteMesas">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Mesas</property>
+              </object>
+              <packing>
+                <property name="tab_expand">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="pixbuf">img/comida.png</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkFixed">
+                        <property name="height_request">32</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <child>
+                          <object class="GtkEntry" id="etCantidadComida">
+                            <property name="width_request">270</property>
+                            <property name="height_request">29</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </object>
+                          <packing>
+                            <property name="x">18</property>
+                            <property name="y">298</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="width_request">100</property>
+                            <property name="height_request">20</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Cantidad</property>
+                          </object>
+                          <packing>
+                            <property name="y">273</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="width_request">100</property>
+                            <property name="height_request">80</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="margin_bottom">30</property>
+                            <property name="homogeneous">True</property>
+                            <child>
+                              <object class="GtkButton" id="BTNAñadirComanda">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">image9</property>
+                                <signal name="clicked" handler="on_BTNAñadirComanda_clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="BTNCancelarComanda">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">image10</property>
+                                <signal name="clicked" handler="on_BTNCancelarComanda_clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="BTNRealizarFactura">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">image11</property>
+                                <signal name="clicked" handler="on_BTNRealizarFactura_clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="x">20</property>
+                            <property name="y">500</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="width_request">141</property>
+                            <property name="height_request">24</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Mesa seleccionada:</property>
+                          </object>
+                          <packing>
+                            <property name="x">20</property>
+                            <property name="y">23</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="lblNumeroComensales">
+                            <property name="width_request">44</property>
+                            <property name="height_request">25</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                          </object>
+                          <packing>
+                            <property name="x">261</property>
+                            <property name="y">97</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="width_request">251</property>
+                            <property name="height_request">25</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Numero de Comensales de esa mesa: </property>
+                          </object>
+                          <packing>
+                            <property name="x">16</property>
+                            <property name="y">97</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="CMBMesasServicios">
+                            <property name="width_request">270</property>
+                            <property name="height_request">30</property>
+                            <property name="visible">True</property>
+                            <property name="sensitive">False</property>
+                            <property name="can_focus">False</property>
+                            <property name="active">0</property>
+                            <items>
+                              <item translatable="yes">Selecciona una mesa.</item>
+                              <item translatable="yes">Mesa 1</item>
+                              <item translatable="yes">Mesa 2</item>
+                              <item translatable="yes">Mesa 3</item>
+                              <item translatable="yes">Mesa 4</item>
+                              <item translatable="yes">Mesa 5</item>
+                              <item translatable="yes">Mesa 6</item>
+                              <item translatable="yes">Mesa 7</item>
+                              <item translatable="yes">Mesa 8</item>
+                            </items>
+                          </object>
+                          <packing>
+                            <property name="x">18</property>
+                            <property name="y">50</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="width_request">100</property>
+                            <property name="height_request">20</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Comanda</property>
+                          </object>
+                          <packing>
+                            <property name="y">138</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="BTNNuevasComandas">
+                            <property name="label" translatable="yes">Añadir nuevas comandas</property>
+                            <property name="width_request">270</property>
+                            <property name="height_request">30</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <signal name="clicked" handler="on_BTNNuevasComandas_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="x">18</property>
+                            <property name="y">218</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="CMBComidas">
+                            <property name="width_request">270</property>
+                            <property name="height_request">30</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="active">1</property>
+                            <property name="active_id">1</property>
+                          </object>
+                          <packing>
+                            <property name="x">18</property>
+                            <property name="y">165</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="shadow_type">in</property>
+                        <child>
+                          <object class="GtkTreeView" id="treeServicios">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="tooltip_text" translatable="yes">
+</property>
+                            <property name="model">ListaComandas</property>
+                            <property name="search_column">0</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection"/>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="IDFactura">
+                                <property name="title" translatable="yes">IDFactura</property>
+                                <property name="expand">True</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="idfactura"/>
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="IDServicio">
+                                <property name="title" translatable="yes">IDServicio</property>
+                                <property name="expand">True</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="idservicio"/>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="Comanda">
+                                <property name="title" translatable="yes">Comanda</property>
+                                <property name="expand">True</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="comanda"/>
+                                  <attributes>
+                                    <attribute name="text">2</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="Cantidad">
+                                <property name="title" translatable="yes">Cantidad</property>
+                                <property name="expand">True</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="cantidad"/>
+                                  <attributes>
+                                    <attribute name="text">3</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn" id="Precio">
+                                <property name="title" translatable="yes">Precio</property>
+                                <property name="expand">True</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="precio"/>
+                                  <attributes>
+                                    <attribute name="text">4</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">1</property>
+                <property name="tab_expand">True</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="noteService">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Servicios</property>
+              </object>
+              <packing>
+                <property name="position">1</property>
+                <property name="tab_expand">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFixed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="width_request">433</property>
+                    <property name="height_request">34</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Generador de Factura y Tickets</property>
+                    <attributes>
+                      <attribute name="weight" value="heavy"/>
+                      <attribute name="scale" value="2"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">26</property>
+                    <property name="y">200</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="width_request">272</property>
+                    <property name="height_request">30</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Mesa sobre la que se realizará la factura:</property>
+                  </object>
+                  <packing>
+                    <property name="x">26</property>
+                    <property name="y">240</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="CMBMesaFactura">
+                    <property name="width_request">270</property>
+                    <property name="height_request">30</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <items>
+                      <item translatable="yes">Selecciona una mesa</item>
+                      <item translatable="yes">Mesa 1</item>
+                      <item translatable="yes">Mesa 2</item>
+                      <item translatable="yes">Mesa 3</item>
+                      <item translatable="yes">Mesa 4</item>
+                      <item translatable="yes">Mesa 5</item>
+                      <item translatable="yes">Mesa 6</item>
+                      <item translatable="yes">Mesa 7</item>
+                      <item translatable="yes">Mesa 8</item>
+                    </items>
+                    <signal name="changed" handler="on_CMBMesaFactura_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="x">26</property>
+                    <property name="y">270</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="width_request">100</property>
+                    <property name="height_request">30</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Cliente al que se asignará la factura:</property>
+                    <attributes>
+                      <attribute name="weight" value="heavy"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">611</property>
+                    <property name="y">310</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="btnModificarCliente">
+                    <property name="label" translatable="yes">Borrar
+Cliente</property>
+                    <property name="width_request">100</property>
+                    <property name="height_request">80</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_btnModificarCliente_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="x">951</property>
+                    <property name="y">200</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="btnGenerarFactura">
+                    <property name="label" translatable="yes">Generar
+Factura</property>
+                    <property name="width_request">100</property>
+                    <property name="height_request">80</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_btnGenerarFactura_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="x">1061</property>
+                    <property name="y">200</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="btnAñadirCliente">
+                    <property name="label" translatable="yes">Añadir
+Cliente</property>
+                    <property name="width_request">100</property>
+                    <property name="height_request">80</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_btnAñadirCliente_clicked" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="x">841</property>
+                    <property name="y">200</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="width_request">100</property>
+                    <property name="height_request">30</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Facturas de esa mesa:</property>
+                    <attributes>
+                      <attribute name="weight" value="heavy"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">26</property>
+                    <property name="y">310</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="width_request">550</property>
+                    <property name="height_request">443</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="shadow_type">in</property>
+                    <child>
+                      <object class="GtkTreeView" id="treeClientes">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="model">listClientes</property>
+                        <property name="search_column">0</property>
+                        <child internal-child="selection">
+                          <object class="GtkTreeSelection"/>
+                        </child>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="dni">
+                            <property name="title" translatable="yes">DNI</property>
+                            <property name="expand">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="dni1"/>
+                              <attributes>
+                                <attribute name="text">0</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="apellidos">
+                            <property name="title" translatable="yes">Apellidos</property>
+                            <property name="expand">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="apellidos1"/>
+                              <attributes>
+                                <attribute name="text">1</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="nombre">
+                            <property name="title" translatable="yes">Nombre</property>
+                            <property name="expand">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="nombre1"/>
+                              <attributes>
+                                <attribute name="text">2</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="direccion">
+                            <property name="title" translatable="yes">Direccion</property>
+                            <property name="expand">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="direccion1"/>
+                              <attributes>
+                                <attribute name="text">3</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="provincia">
+                            <property name="title" translatable="yes">Provincia</property>
+                            <property name="expand">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="provincia1"/>
+                              <attributes>
+                                <attribute name="text">4</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="ciudad">
+                            <property name="title" translatable="yes">Ciudad</property>
+                            <property name="expand">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="ciudad1"/>
+                              <attributes>
+                                <attribute name="text">5</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="x">611</property>
+                    <property name="y">340</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="width_request">550</property>
+                    <property name="height_request">443</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="shadow_type">in</property>
+                    <child>
+                      <object class="GtkTreeView" id="treeFactuMesas">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="model">listFactuMesa</property>
+                        <property name="search_column">0</property>
+                        <signal name="cursor-changed" handler="on_treeFactuMesas_cursor_changed" swapped="no"/>
+                        <child internal-child="selection">
+                          <object class="GtkTreeSelection"/>
+                        </child>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="IDcamarero">
+                            <property name="title" translatable="yes">IDCamarero</property>
+                            <property name="expand">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="idcamarero"/>
+                              <attributes>
+                                <attribute name="text">0</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="IDFactura1">
+                            <property name="title" translatable="yes">IDFactura</property>
+                            <property name="expand">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="idfactura1"/>
+                              <attributes>
+                                <attribute name="text">1</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="fecha">
+                            <property name="title" translatable="yes">Fecha</property>
+                            <property name="expand">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="fecha1"/>
+                              <attributes>
+                                <attribute name="text">2</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkTreeViewColumn" id="pagado">
+                            <property name="title" translatable="yes">Pagado</property>
+                            <property name="expand">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="pagado1"/>
+                              <attributes>
+                                <attribute name="text">3</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="x">26</property>
+                    <property name="y">340</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="width_request">100</property>
+                    <property name="height_request">80</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="pixbuf">img/factura.png</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="position">2</property>
+                <property name="tab_expand">True</property>
+                <property name="reorderable">True</property>
+                <property name="detachable">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="NoteFacture">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Facturas /Tickets</property>
+              </object>
+              <packing>
+                <property name="position">2</property>
+                <property name="tab_expand">True</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkDialog" id="WinAñadirCliente">
     <property name="name">WinAñadirCliente</property>
     <property name="can_focus">False</property>
@@ -470,6 +1550,18 @@
           </packing>
         </child>
         <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pixbuf">img/huevo.png</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkFixed">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -639,1051 +1731,9 @@ Realfood</property>
       <column type="gchararray"/>
     </columns>
   </object>
-  <object class="GtkWindow" id="VentanaPrincipal">
-    <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Restaurante</property>
-    <property name="window_position">center</property>
-    <property name="default_width">1220</property>
-    <signal name="destroy" handler="on_VentanaPrincipal_destroy" swapped="no"/>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <object class="GtkBox">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkMenuBar">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <child>
-              <object class="GtkMenuItem">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Axuda</property>
-                <property name="use_underline">True</property>
-                <child type="submenu">
-                  <object class="GtkMenu">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkImageMenuItem" id="btnSobre">
-                        <property name="label">gtk-about</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <signal name="activate" handler="on_btnSobre_activate" swapped="no"/>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkNotebook" id="notebook">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <child>
-              <object class="GtkPaned">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="margin_bottom">13</property>
-                <child>
-                  <object class="GtkFixed">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkButton" id="BTNMesa4">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="margin_right">10</property>
-                        <property name="image">image4</property>
-                        <property name="relief">none</property>
-                        <signal name="clicked" handler="on_BTNMesa4_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="x">530</property>
-                        <property name="y">80</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="BTNMesa3">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image">image3</property>
-                        <property name="relief">none</property>
-                        <signal name="clicked" handler="on_BTNMesa3_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="x">355</property>
-                        <property name="y">80</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="BTNMesa1">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image">image1</property>
-                        <property name="relief">none</property>
-                        <signal name="clicked" handler="on_BTNMesa1_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="x">5</property>
-                        <property name="y">80</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="BTNMesa8">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image">image7</property>
-                        <property name="relief">none</property>
-                        <signal name="clicked" handler="on_BTNMesa8_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="x">275</property>
-                        <property name="y">400</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="BTNMesa6">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image">image6</property>
-                        <property name="relief">none</property>
-                        <signal name="clicked" handler="on_BTNMesa6_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="x">210</property>
-                        <property name="y">236</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="BTNMesa7">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image">image8</property>
-                        <property name="relief">none</property>
-                        <signal name="clicked" handler="on_BTNMesa7_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="x">5</property>
-                        <property name="y">400</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="BTNMesa5">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image">image5</property>
-                        <property name="relief">none</property>
-                        <signal name="clicked" handler="on_BTNMesa5_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="x">5</property>
-                        <property name="y">236</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="BTNMesa2">
-                        <property name="width_request">100</property>
-                        <property name="height_request">80</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image">image2</property>
-                        <property name="relief">none</property>
-                        <signal name="clicked" handler="on_BTNMesa2_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="x">180</property>
-                        <property name="y">80</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="resize">False</property>
-                    <property name="shrink">True</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="margin_top">20</property>
-                        <property name="label" translatable="yes">Seleccion de mesa
-y márcala como ocupada. </property>
-                        <attributes>
-                          <attribute name="weight" value="heavy"/>
-                          <attribute name="scale" value="2"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkFixed">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkComboBoxText" id="CMBMesas">
-                            <property name="name">CMBMesas</property>
-                            <property name="width_request">400</property>
-                            <property name="height_request">28</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="active">0</property>
-                            <items>
-                              <item translatable="yes">Escoge una mesa</item>
-                              <item translatable="yes">Mesa 1 (4 Personas)</item>
-                              <item translatable="yes">Mesa 2 (4 Personas)</item>
-                              <item translatable="yes">Mesa 3 (4 Personas)</item>
-                              <item translatable="yes">Mesa 4 (4 Personas)</item>
-                              <item translatable="yes">Mesa 5 (8 Personas)</item>
-                              <item translatable="yes">Mesa 6 (8 Personas)</item>
-                              <item translatable="yes">Mesa 7 (10 Personas)</item>
-                              <item translatable="yes">Mesa 8 (10 Personas)</item>
-                            </items>
-                          </object>
-                          <packing>
-                            <property name="x">65</property>
-                            <property name="y">24</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="BTNOcuparMesa">
-                            <property name="label" translatable="yes">Ocupar Mesa</property>
-                            <property name="width_request">100</property>
-                            <property name="height_request">2</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="margin_top">20</property>
-                            <property name="margin_bottom">20</property>
-                            <signal name="clicked" handler="on_BTNOcuparMesa_clicked" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="x">17</property>
-                            <property name="y">111</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="BTNRealizarPago">
-                            <property name="label" translatable="yes">Realizar Pago</property>
-                            <property name="width_request">105</property>
-                            <property name="height_request">29</property>
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="margin_top">20</property>
-                            <signal name="clicked" handler="on_BTNRealizarPago_clicked" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="x">291</property>
-                            <property name="y">111</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="BTNVaciarMesa">
-                            <property name="label" translatable="yes">Vaciar Mesa</property>
-                            <property name="width_request">100</property>
-                            <property name="height_request">29</property>
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="margin_top">20</property>
-                            <signal name="clicked" handler="on_BTNVaciarMesa_clicked" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="x">401</property>
-                            <property name="y">111</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkScrolledWindow">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="shadow_type">in</property>
-                        <property name="min_content_height">400</property>
-                        <child>
-                          <object class="GtkTreeView" id="treeMesas">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="model">ListaMesas</property>
-                            <signal name="cursor-changed" handler="on_treeMesas_cursor_changed" swapped="no"/>
-                            <child internal-child="selection">
-                              <object class="GtkTreeSelection"/>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn" id="codigoMesa">
-                                <property name="title" translatable="yes">Codigo Mesa</property>
-                                <property name="expand">True</property>
-                                <child>
-                                  <object class="GtkCellRendererText" id="codigoMesa1"/>
-                                  <attributes>
-                                    <attribute name="text">0</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn" id="MaxPersonas">
-                                <property name="title" translatable="yes">Maximo de personas</property>
-                                <property name="expand">True</property>
-                                <child>
-                                  <object class="GtkCellRendererText" id="MaxPersonas2"/>
-                                  <attributes>
-                                    <attribute name="text">1</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="resize">True</property>
-                    <property name="shrink">True</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="tab_expand">True</property>
-                <property name="reorderable">True</property>
-                <property name="detachable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="noteMesas">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Mesas</property>
-              </object>
-              <packing>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="hexpand">True</property>
-                    <child>
-                      <object class="GtkFixed">
-                        <property name="height_request">400</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkEntry" id="etCantidadComida">
-                            <property name="width_request">270</property>
-                            <property name="height_request">29</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </object>
-                          <packing>
-                            <property name="x">18</property>
-                            <property name="y">298</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="width_request">100</property>
-                            <property name="height_request">20</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Cantidad</property>
-                          </object>
-                          <packing>
-                            <property name="y">273</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="width_request">100</property>
-                            <property name="height_request">80</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="homogeneous">True</property>
-                            <child>
-                              <object class="GtkButton" id="BTNAñadirComanda">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="image">image9</property>
-                                <signal name="clicked" handler="on_BTNAñadirComanda_clicked" swapped="no"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="BTNCancelarComanda">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="image">image10</property>
-                                <signal name="clicked" handler="on_BTNCancelarComanda_clicked" swapped="no"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="BTNRealizarFactura">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="image">image11</property>
-                                <signal name="clicked" handler="on_BTNRealizarFactura_clicked" swapped="no"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="x">20</property>
-                            <property name="y">530</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="width_request">141</property>
-                            <property name="height_request">24</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Mesa seleccionada:</property>
-                          </object>
-                          <packing>
-                            <property name="x">20</property>
-                            <property name="y">23</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="lblNumeroComensales">
-                            <property name="width_request">44</property>
-                            <property name="height_request">25</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                          </object>
-                          <packing>
-                            <property name="x">261</property>
-                            <property name="y">97</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="width_request">251</property>
-                            <property name="height_request">25</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Numero de Comensales de esa mesa: </property>
-                          </object>
-                          <packing>
-                            <property name="x">16</property>
-                            <property name="y">97</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkComboBoxText" id="CMBMesasServicios">
-                            <property name="width_request">270</property>
-                            <property name="height_request">30</property>
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can_focus">False</property>
-                            <property name="active">0</property>
-                            <items>
-                              <item translatable="yes">Selecciona una mesa.</item>
-                              <item translatable="yes">Mesa 1</item>
-                              <item translatable="yes">Mesa 2</item>
-                              <item translatable="yes">Mesa 3</item>
-                              <item translatable="yes">Mesa 4</item>
-                              <item translatable="yes">Mesa 5</item>
-                              <item translatable="yes">Mesa 6</item>
-                              <item translatable="yes">Mesa 7</item>
-                              <item translatable="yes">Mesa 8</item>
-                            </items>
-                          </object>
-                          <packing>
-                            <property name="x">18</property>
-                            <property name="y">50</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="width_request">100</property>
-                            <property name="height_request">20</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Comanda</property>
-                          </object>
-                          <packing>
-                            <property name="y">138</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="BTNNuevasComandas">
-                            <property name="label" translatable="yes">Añadir nuevas comandas</property>
-                            <property name="width_request">270</property>
-                            <property name="height_request">30</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <signal name="clicked" handler="on_BTNNuevasComandas_clicked" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="x">18</property>
-                            <property name="y">218</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkComboBoxText" id="CMBComidas">
-                            <property name="width_request">270</property>
-                            <property name="height_request">30</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="active">1</property>
-                            <property name="active_id">1</property>
-                          </object>
-                          <packing>
-                            <property name="x">18</property>
-                            <property name="y">165</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkScrolledWindow">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
-                        <property name="shadow_type">in</property>
-                        <child>
-                          <object class="GtkTreeView" id="treeServicios">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="tooltip_text" translatable="yes">
-</property>
-                            <property name="model">ListaComandas</property>
-                            <child internal-child="selection">
-                              <object class="GtkTreeSelection"/>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn" id="IDFactura">
-                                <property name="title" translatable="yes">IDFactura</property>
-                                <property name="expand">True</property>
-                                <child>
-                                  <object class="GtkCellRendererText" id="idfactura"/>
-                                  <attributes>
-                                    <attribute name="text">0</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn" id="IDServicio">
-                                <property name="title" translatable="yes">IDServicio</property>
-                                <property name="expand">True</property>
-                                <child>
-                                  <object class="GtkCellRendererText" id="idservicio"/>
-                                  <attributes>
-                                    <attribute name="text">1</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn" id="Comanda">
-                                <property name="title" translatable="yes">Comanda</property>
-                                <property name="expand">True</property>
-                                <child>
-                                  <object class="GtkCellRendererText" id="comanda"/>
-                                  <attributes>
-                                    <attribute name="text">2</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn" id="Cantidad">
-                                <property name="title" translatable="yes">Cantidad</property>
-                                <property name="expand">True</property>
-                                <child>
-                                  <object class="GtkCellRendererText" id="cantidad"/>
-                                  <attributes>
-                                    <attribute name="text">3</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn" id="Precio">
-                                <property name="title" translatable="yes">Precio</property>
-                                <property name="expand">True</property>
-                                <child>
-                                  <object class="GtkCellRendererText" id="precio"/>
-                                  <attributes>
-                                    <attribute name="text">4</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="position">1</property>
-                <property name="tab_expand">True</property>
-                <property name="reorderable">True</property>
-                <property name="detachable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="noteService">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Servicios</property>
-              </object>
-              <packing>
-                <property name="position">1</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkFixed">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="width_request">433</property>
-                    <property name="height_request">34</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Generador de Factura y Tickets</property>
-                    <attributes>
-                      <attribute name="weight" value="heavy"/>
-                      <attribute name="scale" value="2"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">26</property>
-                    <property name="y">27</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="width_request">272</property>
-                    <property name="height_request">30</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Mesa sobre la que se realizará la factura:</property>
-                  </object>
-                  <packing>
-                    <property name="x">26</property>
-                    <property name="y">76</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="CMBMesaFactura">
-                    <property name="width_request">270</property>
-                    <property name="height_request">30</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <items>
-                      <item translatable="yes">Selecciona una mesa</item>
-                      <item translatable="yes">Mesa 1</item>
-                      <item translatable="yes">Mesa 2</item>
-                      <item translatable="yes">Mesa 3</item>
-                      <item translatable="yes">Mesa 4</item>
-                      <item translatable="yes">Mesa 5</item>
-                      <item translatable="yes">Mesa 6</item>
-                      <item translatable="yes">Mesa 7</item>
-                      <item translatable="yes">Mesa 8</item>
-                    </items>
-                    <signal name="changed" handler="on_CMBMesaFactura_changed" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">26</property>
-                    <property name="y">106</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="width_request">100</property>
-                    <property name="height_request">30</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Cliente al que se asignará la factura:</property>
-                    <attributes>
-                      <attribute name="weight" value="heavy"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">611</property>
-                    <property name="y">152</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="btnModificarCliente">
-                    <property name="label" translatable="yes">Borrar
-Cliente</property>
-                    <property name="width_request">100</property>
-                    <property name="height_request">80</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <signal name="clicked" handler="on_btnModificarCliente_clicked" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">951</property>
-                    <property name="y">45</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="btnGenerarFactura">
-                    <property name="label" translatable="yes">Generar
-Factura</property>
-                    <property name="width_request">100</property>
-                    <property name="height_request">80</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <signal name="clicked" handler="on_btnGenerarFactura_clicked" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">1061</property>
-                    <property name="y">45</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="btnAñadirCliente">
-                    <property name="label" translatable="yes">Añadir
-Cliente</property>
-                    <property name="width_request">100</property>
-                    <property name="height_request">80</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <signal name="clicked" handler="on_btnAñadirCliente_clicked" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">841</property>
-                    <property name="y">45</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="width_request">100</property>
-                    <property name="height_request">30</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Facturas de esa mesa:</property>
-                    <attributes>
-                      <attribute name="weight" value="heavy"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">26</property>
-                    <property name="y">152</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScrolledWindow">
-                    <property name="width_request">550</property>
-                    <property name="height_request">443</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="hexpand">True</property>
-                    <property name="vexpand">True</property>
-                    <property name="shadow_type">in</property>
-                    <child>
-                      <object class="GtkTreeView" id="treeClientes">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="model">listClientes</property>
-                        <child internal-child="selection">
-                          <object class="GtkTreeSelection"/>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="dni">
-                            <property name="title" translatable="yes">DNI</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="dni1"/>
-                              <attributes>
-                                <attribute name="text">0</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="apellidos">
-                            <property name="title" translatable="yes">Apellidos</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="apellidos1"/>
-                              <attributes>
-                                <attribute name="text">1</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="nombre">
-                            <property name="title" translatable="yes">Nombre</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="nombre1"/>
-                              <attributes>
-                                <attribute name="text">2</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="direccion">
-                            <property name="title" translatable="yes">Direccion</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="direccion1"/>
-                              <attributes>
-                                <attribute name="text">3</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="provincia">
-                            <property name="title" translatable="yes">Provincia</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="provincia1"/>
-                              <attributes>
-                                <attribute name="text">4</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="ciudad">
-                            <property name="title" translatable="yes">Ciudad</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="ciudad1"/>
-                              <attributes>
-                                <attribute name="text">5</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="x">611</property>
-                    <property name="y">188</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScrolledWindow">
-                    <property name="width_request">550</property>
-                    <property name="height_request">443</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="hexpand">True</property>
-                    <property name="vexpand">True</property>
-                    <property name="shadow_type">in</property>
-                    <child>
-                      <object class="GtkTreeView" id="treeFactuMesas">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="model">listFactuMesa</property>
-                        <signal name="cursor-changed" handler="on_treeFactuMesas_cursor_changed" swapped="no"/>
-                        <child internal-child="selection">
-                          <object class="GtkTreeSelection"/>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="IDcamarero">
-                            <property name="title" translatable="yes">IDCamarero</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="idcamarero"/>
-                              <attributes>
-                                <attribute name="text">0</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="IDFactura1">
-                            <property name="title" translatable="yes">IDFactura</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="idfactura1"/>
-                              <attributes>
-                                <attribute name="text">1</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="fecha">
-                            <property name="title" translatable="yes">Fecha</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="fecha1"/>
-                              <attributes>
-                                <attribute name="text">2</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkTreeViewColumn" id="pagado">
-                            <property name="title" translatable="yes">Pagado</property>
-                            <property name="expand">True</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="pagado1"/>
-                              <attributes>
-                                <attribute name="text">3</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="x">26</property>
-                    <property name="y">188</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="position">2</property>
-                <property name="tab_expand">True</property>
-                <property name="reorderable">True</property>
-                <property name="detachable">True</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="NoteFacture">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Facturas /Tickets</property>
-              </object>
-              <packing>
-                <property name="position">2</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkImage">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
   <object class="GtkDialog" id="winErrores">
     <property name="can_focus">False</property>
+    <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="type_hint">dialog</property>
     <signal name="destroy" handler="on_winErrores_destroy" swapped="no"/>
@@ -1700,9 +1750,21 @@ Cliente</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
+              <object class="GtkLabel" id="lblError">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">label</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton">
                 <property name="label" translatable="yes">Exit</property>
-                <property name="width_request">150</property>
+                <property name="width_request">25</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1712,14 +1774,14 @@ Cliente</property>
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
-            <property name="position">0</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>

@@ -80,6 +80,7 @@ class Restaurante:
         self.notebook = b.get_object('notebook')
         self.winSobre = b.get_object('winSobre')
         self.winErrores = b.get_object('winErrores')
+        self.lblError = b.get_object('lblError')
 
         # Diccionario
         # Eventos
@@ -123,6 +124,7 @@ class Restaurante:
                }
 
         b.connect_signals(dic)
+        self.winErrores.connect('delete-event', lambda w, e: w.hide() or True)
         self.CMBMesas.set_sensitive(False)
         BBDD.cargaMesasInicio(self.ListaMesas, self.treeMesas, self.image1, self.image2, self.image3, self.image4,
                               self.image5, self.image6, self.image7, self.image8, self.BTNMesa1, self.BTNMesa2,
@@ -307,7 +309,7 @@ class Restaurante:
             self.CMBMesasServicios.set_active(idMesa)
             self.CMBMesaFactura.set_active(idMesa)
             self.lblNumeroComensales.set_text(str(numeroPersonas))
-            BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa)
+            BBDD.CargaServiciosMesaNormal(self.ListaComandas, self.treeServicios, idMesa)
             BBDD.CargarFacturasMesa(self.listFactuMesa, self.treeFactuMesas, idMesa)
             self.BTNOcuparMesa.set_sensitive(False)
             self.BTNRealizarPago.set_sensitive(True)
@@ -317,12 +319,26 @@ class Restaurante:
         model, iter = self.treeMesas.get_selection().get_selected()
 
         idMesa = model.get_value(iter, 0)
-        BBDD.borrarFactura(idMesa)
-        BBDD.vaciarMesa(idMesa)
-        BBDD.cargaMesasInicio(self.ListaMesas, self.treeMesas, self.image1, self.image2, self.image3, self.image4,
-                              self.image5, self.image6, self.image7, self.image8, self.BTNMesa1, self.BTNMesa2,
-                              self.BTNMesa3, self.BTNMesa4, self.BTNMesa5, self.BTNMesa6, self.BTNMesa7,
-                              self.BTNMesa8)
+
+        comprobar = self.comprobarMesa(idMesa)
+
+        if comprobar == False:
+            BBDD.borrarFactura(idMesa)
+            BBDD.vaciarMesa(idMesa)
+            BBDD.cargaMesasInicio(self.ListaMesas, self.treeMesas, self.image1, self.image2, self.image3, self.image4,
+                                  self.image5, self.image6, self.image7, self.image8, self.BTNMesa1, self.BTNMesa2,
+                                  self.BTNMesa3, self.BTNMesa4, self.BTNMesa5, self.BTNMesa6, self.BTNMesa7,
+                                  self.BTNMesa8)
+
+    def comprobarMesa(self, idMesa):
+
+        veremos = BBDD.ComprobarMesaServicios(idMesa)
+        if veremos != 0:
+            self.winErrores.show()
+            self.lblError.set_text("Esta mesa tiene servicios asignados.")
+            return True
+        else:
+            return False
 
     def VaciarMesaPagada(self, witget, data=None):
 
@@ -339,6 +355,7 @@ class Restaurante:
         nombreServicio = self.CMBComidas.get_active_text()
         cantidad = self.etCantidadComida.get_text()
         nombreMesa = self.CMBMesasServicios.get_active_text()
+
         if nombreMesa == "Mesa 1":
             idMesa = 1
         if nombreMesa == "Mesa 2":
@@ -356,12 +373,22 @@ class Restaurante:
         if nombreMesa == "Mesa 8":
             idMesa = 8
 
+        if idmesa == 0:
+            self.winErrores.show()
+            self.lblError.set_text("Selecciona una mesa.")
+
+        if nombreServicio == None:
+            self.winErrores.show()
+            self.lblError.set_text("Selecciona un servicio.")
+
         if cantidad == "":
-            print("NO HAY NADA")
-        else:
+            self.winErrores.show()
+            self.lblError.set_text("Selecciona una cantidad.")
+
+        if idmesa != 0 and nombreServicio != None and cantidad != "":
             BBDD.AñadirServicioFacturaLista(idmesa, nombreServicio, cantidad)
             self.etCantidadComida.set_text("")
-            BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa)
+            BBDD.CargaServiciosMesaNormal(self.ListaComandas, self.treeServicios, idMesa)
 
     def on_BTNCancelarComanda_clicked(self, witget, data=None):
         model, iter = self.treeServicios.get_selection().get_selected()
@@ -406,7 +433,24 @@ class Restaurante:
         provincia = self.cmbProvincia.get_active_text()
 
         valido = self.validoDNI(dni)
-        if valido:
+
+        if nombre == "" or apellidos == "" or direcc == "":
+            self.winErrores.show()
+            self.lblError.set_text("No dejes campos vacios.")
+
+        if provincia == None:
+            self.winErrores.show()
+            self.lblError.set_text("Selecciona una Provincia.")
+
+        if ciudad == None:
+            self.winErrores.show()
+            self.lblError.set_text("Selecciona una Ciudad.")
+
+        if valido == False:
+            self.winErrores.show()
+            self.lblError.set_text("Escribe un DNI valido.")
+
+        if valido and nombre != "" and apellidos != "" or direcc != "" and provincia != None and ciudad != None:
             BBDD.guardarCliente(dni, nombre, apellidos, direcc, provincia, ciudad)
             BBDD.CargarClientes(self.listClientes, self.treeClientes)
             self.edNombre.set_text("")
@@ -415,8 +459,6 @@ class Restaurante:
             self.edDNI.set_text("")
             self.cmbCiudad.remove_all()
             self.WinAñadirCliente.hide()
-        else:
-            print("DNI NO VALIDO")
 
     def validoDNI(self, dni):
 
@@ -437,21 +479,42 @@ class Restaurante:
     def on_btnModificarCliente_clicked(self, witget, data=None):
         model, iter = self.treeClientes.get_selection().get_selected()
 
-        dni = model.get_value(iter, 0)
-        BBDD.BorrarCliente(dni)
-        BBDD.CargarClientes(self.listClientes, self.treeClientes)
+        if iter == None:
+            self.winErrores.show()
+            self.lblError.set_text("Selecciona un cliente.")
+
+        if iter != None:
+            dni = model.get_value(iter, 0)
+            BBDD.BorrarCliente(dni)
+            BBDD.CargarClientes(self.listClientes, self.treeClientes)
 
     def on_btnGenerarFactura_clicked(self, witget, data=None):
         model1, iter1 = self.treeClientes.get_selection().get_selected()
         model2, iter2 = self.treeFactuMesas.get_selection().get_selected()
-        idMesa = self.CMBMesaFactura.get_active()
 
-        dni = model1.get_value(iter1, 0)
-        idfactu = model2.get_value(iter2, 1)
-        BBDD.AñadirClienteFactura(dni, idfactu)
-        BBDD.CargarFacturasMesa(self.listFactuMesa, self.treeFactuMesas, idMesa)
-        Restaurante.VaciarMesaPagada(self, witget)
-        Informe.factura(idfactu)
+        if iter2 == None:
+            self.winErrores.show()
+            self.lblError.set_text("Selecciona una factura.")
+
+        if iter1 == None:
+            self.winErrores.show()
+            self.lblError.set_text("Selecciona un cliente.")
+
+
+        if iter1 != None and iter2 != None:
+            pagado = model2.get_value(iter2, 3)
+            if pagado == "No":
+                idMesa = self.CMBMesaFactura.get_active()
+                dni = model1.get_value(iter1, 0)
+                idfactu = model2.get_value(iter2, 1)
+                BBDD.AñadirClienteFactura(dni, idfactu)
+                BBDD.CargarFacturasMesa(self.listFactuMesa, self.treeFactuMesas, idMesa)
+                Restaurante.VaciarMesaPagada(self, witget)
+                Informe.factura(idfactu)
+
+            if pagado == "Si":
+                idfactu = model2.get_value(iter2, 1)
+                Informe.factura(idfactu)
 
     def on_CMBMesaFactura_changed(self, witget, data=None):
         idMesa = self.CMBMesaFactura.get_active()
@@ -460,9 +523,12 @@ class Restaurante:
         BBDD.CargarFacturasMesa(self.listFactuMesa, self.treeFactuMesas, idMesa)
 
     def on_treeFactuMesas_cursor_changed(self, witget, data=None):
-        if iter != None:
-            idMesa = self.CMBMesaFactura.get_active()
-            BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa)
+        model2, iter2 = self.treeFactuMesas.get_selection().get_selected()
+        idMesa = self.CMBMesaFactura.get_active()
+
+        if iter2 != None:
+            idfactu = model2.get_value(iter2, 1)
+            BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa, idfactu)
 
 
 if __name__ == '__main__':
