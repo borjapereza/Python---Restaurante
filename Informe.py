@@ -35,36 +35,56 @@ def cabecera(cser):
         textnom = 'RealFooters Restaurant'
         textdir = 'Calle Maxwell S/N- Vigo'
         texttlfo = '555 55 55 55'
-        cser.drawString(255, 795, textnom)
-        cser.drawString(245, 775, textdir)
-        cser.drawString(280, 755, texttlfo)
+        cser.drawCentredString(297.5, 795, textnom)
+        cser.drawCentredString(297.5, 775, textdir)
+        cser.drawCentredString(297.5, 755, texttlfo)
     except:
-        print ('erros cabecera')
+        print ('error cabecera')
 
 def pie(cser):
     try:
-        cser.line(50, 20, 525, 20)
+        cser.line(50, 100, 525, 100)
         textgracias = "Gracias por su visita"
-        cser.drawString(270, 10, textgracias)
+        cser.drawCentredString(297.5, 50, textgracias)
 
     except:
-        print('erros pie')
+        print('error pie')
 
+def cliente(cser,dni):
+    Ayuda = ["DNI: ", "Apellidos: ", "Nombre: ", "Direccion: ", "Provincia: ", "Municipio: "]
 
-def factura(idfactura):
+    try:
+        cur.execute(
+            'select * from cliente where dni=?', (dni,))
+        listado = cur.fetchall()
+        conexion.commit()
+        x = 50
+        y = 590
+        for registro in listado:
+            for i in range(6):
+                y = y + 15
+                cser.drawString(x, y, Ayuda[i] +" "+ str(registro[i]))
+
+    except:
+        print('error cliente')
+
+def factura(idfactura,dni):
     try:
         cser = canvas.Canvas( str(idfactura) + '.pdf', pagesize=A4)
 
         cabecera(cser)
         pie(cser)
+        cliente(cser,dni)
         cur.execute('select c.idventa, s.servicio, c.cantidad, s.preciounidad from LineaFactura as c inner join servicio as s on s.IdServicio = c.IdServicio  where c.idfactura = ?', (idfactura,))
         listado = cur.fetchall()
         conexion.commit()
         textlistado = 'Factura'
-        cser.drawString(255, 705, textlistado)
-        cser.line(50, 700, 525, 700)
+        textcliente = 'Cliente'
+        cser.drawString(255, 590, textlistado)
+        cser.drawString(255, 710, textcliente)
+        cser.line(50, 580, 525, 580)
         x = 50
-        y = 680
+        y = 540
         total = 0
         for registro in listado:
             for i in range(4):

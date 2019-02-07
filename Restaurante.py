@@ -1,7 +1,9 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
-
+import os
+import zipfile
+import getpass
 import gi
 import BBDD
 import BBDD2
@@ -121,6 +123,7 @@ class Restaurante:
                'on_btnSobre_activate': self.on_btnSobre_activate,
                'on_winErrores' : self.on_winErrores,
                'on_winErrores_destroy': self.on_winErrores_destroy,
+               'on_btnCompresionBBDD_activate': self.on_btnCompresionBBDD_activate,
                }
 
         b.connect_signals(dic)
@@ -510,11 +513,12 @@ class Restaurante:
                 BBDD.AñadirClienteFactura(dni, idfactu)
                 BBDD.CargarFacturasMesa(self.listFactuMesa, self.treeFactuMesas, idMesa)
                 Restaurante.VaciarMesaPagada(self, witget)
-                Informe.factura(idfactu)
+                Informe.factura(idfactu,dni)
 
             if pagado == "Si":
                 idfactu = model2.get_value(iter2, 1)
-                Informe.factura(idfactu)
+                dni = model1.get_value(iter1, 0)
+                Informe.factura(idfactu,dni)
 
     def on_CMBMesaFactura_changed(self, witget, data=None):
         idMesa = self.CMBMesaFactura.get_active()
@@ -530,6 +534,15 @@ class Restaurante:
             idfactu = model2.get_value(iter2, 1)
             BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa, idfactu)
 
+    def on_btnCompresionBBDD_activate(self, witget, data=None):
+
+        if not os.path.exists('/home/' + getpass.getuser() + '/copias'):
+            os.mkdir('/home/' + getpass.getuser() + '/copias', mode=0o777, dir_fd=None)
+
+        fichzip = zipfile.ZipFile("copiaRestaurante.zip", "w")
+        fichzip.write("dataBaseRestaurante", "./dataBaseRestaurante", zipfile.ZIP_DEFLATED)
+
+        fichzip.close()
 
 if __name__ == '__main__':
     main = Restaurante()
