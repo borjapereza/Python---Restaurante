@@ -144,7 +144,7 @@ class Restaurante:
 
     def set_style(self):
         provider = Gtk.CssProvider()
-        provider.load_from_path(join(WHERE_AM_I, 'gtk-dark.css'))
+        provider.load_from_path(join(WHERE_AM_I, 'gtk.css'))
         screen = Gdk.Display.get_default_screen(Gdk.Display.get_default())
         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION = 600
         Gtk.StyleContext.add_provider_for_screen(
