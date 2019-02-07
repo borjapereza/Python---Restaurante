@@ -1,8 +1,18 @@
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
+
 import os
 import sqlite3
 import locale
+
+
+# Registered font family
+pdfmetrics.registerFont(TTFont('MontserratTH', 'Montserrat-Thin.ttf'))
+pdfmetrics.registerFont(TTFont('Montserrat', 'Montserrat-Regular.ttf'))
+pdfmetrics.registerFont(TTFont('MontserratBL', 'Montserrat-Bold.ttf'))
+pdfmetrics.registerFont(TTFont('MontserratAlt', 'MontserratAlternates-Regular.ttf'))
 
 try:
     bbdd = 'dataBaseRestaurante'
@@ -27,7 +37,7 @@ def cabecera(cser):
     try:
         cser.setTitle('Informes')
         cser.setAuthor('Alfonso Fernández Álvarez')
-        cser.setFont('Helvetica', 11)
+        cser.setFont('Montserrat', 24)
 
         cser.line(50, 820, 525, 820)
         cser.line(50, 745, 525, 745)
@@ -36,6 +46,7 @@ def cabecera(cser):
         textdir = 'Calle Maxwell S/N- Vigo'
         texttlfo = '555 55 55 55'
         cser.drawCentredString(297.5, 795, textnom)
+        cser.setFont('MontserratTH', 11)
         cser.drawCentredString(297.5, 775, textdir)
         cser.drawCentredString(297.5, 755, texttlfo)
     except:
@@ -52,7 +63,7 @@ def pie(cser):
 
 def cliente(cser,dni):
     Ayuda = ["DNI: ", "Apellidos: ", "Nombre: ", "Direccion: ", "Provincia: ", "Municipio: "]
-
+    cser.setFont('MontserratAlt', 11)
     try:
         cur.execute(
             'select * from cliente where dni=?', (dni,))
@@ -78,11 +89,13 @@ def factura(idfactura,dni):
         cur.execute('select c.idventa, s.servicio, c.cantidad, s.preciounidad from LineaFactura as c inner join servicio as s on s.IdServicio = c.IdServicio  where c.idfactura = ?', (idfactura,))
         listado = cur.fetchall()
         conexion.commit()
+        cser.setFont('MontserratBL', 11)
         textlistado = 'Factura'
         textcliente = 'Cliente'
         cser.drawString(255, 590, textlistado)
         cser.drawString(255, 710, textcliente)
         cser.line(50, 580, 525, 580)
+        cser.setFont('Montserrat', 11)
         x = 50
         y = 540
         total = 0
@@ -111,7 +124,9 @@ def factura(idfactura,dni):
         cser.line(50, y, 525, y)
         y = y -20
         x = 400
+        cser.setFont('MontserratBL', 11)
         cser.drawString(x, y, 'Total: ')
+        cser.setFont('Montserrat', 11)
         x = 485
         total = round(float(total), 2)
         total = locale.currency(total)
