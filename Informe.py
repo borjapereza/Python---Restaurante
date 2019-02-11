@@ -7,13 +7,17 @@ import os
 import sqlite3
 import locale
 
-
-# Registered font family
+"""
+    # Accion que carga y registra las fuentes que va a usar los informes una vez generados
+"""
 pdfmetrics.registerFont(TTFont('MontserratTH', 'Montserrat-Thin.ttf'))
 pdfmetrics.registerFont(TTFont('Montserrat', 'Montserrat-Regular.ttf'))
 pdfmetrics.registerFont(TTFont('MontserratBL', 'Montserrat-Bold.ttf'))
 pdfmetrics.registerFont(TTFont('MontserratAlt', 'MontserratAlternates-Regular.ttf'))
 
+"""
+    # Accion que conecta con la BBDD nada mas abrir el programa
+"""
 try:
     bbdd = 'dataBaseRestaurante'
     conexion = sqlite3.connect(bbdd)
@@ -25,6 +29,9 @@ except sqlite3.OperationalError as e:
 
 
 def cerrarConexion():
+    """
+        # Accion que cierra la bbdd una vez cierra el programa
+    """
     try:
         conexion.commit()
         conexion.close()
@@ -33,7 +40,9 @@ def cerrarConexion():
         print(e)
 
 def cabecera(cser):
-
+    """
+        # Accion dibuja la parte superior del informe
+    """
     try:
         cser.setTitle('Informes')
         cser.setAuthor('Alfonso Fernández Álvarez')
@@ -53,6 +62,9 @@ def cabecera(cser):
         print ('error cabecera')
 
 def pie(cser):
+    """
+        # Accion que dibuja la parte del pie de informe
+    """
     try:
         cser.line(50, 100, 525, 100)
         textgracias = "Gracias por su visita"
@@ -62,6 +74,9 @@ def pie(cser):
         print('error pie')
 
 def cliente(cser,dni):
+    """
+        # Accion que dibuja la parte del cliente del informe
+    """
     Ayuda = ["DNI: ", "Apellidos: ", "Nombre: ", "Direccion: ", "Provincia: ", "Municipio: "]
     cser.setFont('MontserratAlt', 11)
     try:
@@ -80,6 +95,9 @@ def cliente(cser,dni):
         print('error cliente')
 
 def factura(idfactura,dni):
+    """
+        # Accion que dibuja las comandas de esa mesa así como su importe y su importe total
+    """
     try:
         cser = canvas.Canvas( str(idfactura) + '.pdf', pagesize=A4)
 

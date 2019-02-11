@@ -2,6 +2,9 @@ import sqlite3
 
 from gi.repository import Gtk
 
+"""
+    # Accion que conecta con la BBDD nada mas abrir el programa
+"""
 try:
     bbdd = 'provinciaslocalidades'
     conex = sqlite3.connect(bbdd)
@@ -13,6 +16,9 @@ except sqlite3.OperationalError as e:
 
 
 def cerrarConexion():
+    """
+        # Accion que cierra la bbdd una vez cierra el programa
+    """
     try:
         conex.commit()
         conex.close()
@@ -21,6 +27,9 @@ def cerrarConexion():
         print(e)
 
 def CargarProvincias(cmbProvincia):
+    """
+        # Accion que carga las provincias de la BBDD
+    """
     i = 0
     cur.execute("SELECT provincia FROM Provincias")
     rows = cur.fetchall()
@@ -35,6 +44,9 @@ def CargarProvincias(cmbProvincia):
     conex.commit()
 
 def CargarMunicipios(cmbCiudad,nombre):
+    """
+        # Accion que carga los municipios de la BBDD según que provincia escogieses antes
+    """
     i = 0
     cur.execute("SELECT M.Municipio FROM Municipios as M INNER JOIN Provincias as P on M.provincia_id = P.id where P.Provincia=?",(nombre,))
     list = Gtk.ListStore(str)

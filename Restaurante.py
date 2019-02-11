@@ -1,7 +1,9 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-import os
+"""
+    # Proyecto realizado por Alfonso Fernández Álvarez
+    # Destinado a aprendizaje en el centro IES de Teis Vigo
+    # Importacion de librerias y repositorios
+
+"""
 import zipfile
 import getpass
 import gi
@@ -15,17 +17,23 @@ from os.path import abspath, dirname, join
 
 WHERE_AM_I = abspath(dirname(__file__))
 
-
+"""
+    # Comienzo de la clase restaurante
+"""
 class Restaurante:
 
     def __init__(self):
         b = Gtk.Builder()
         b.add_from_file('Restaurante.glade')
 
-        # Cargar el aspecto de la  app
+        """
+            # Cargar aspectos de la aplicacion
+        """
         self.set_style()
 
-        # Objetos Ventana Mesas
+        """
+            # Objetos de Ventanas
+        """
         self.venprincipal = b.get_object('VentanaPrincipal')
         self.WinLogCamarero = b.get_object('WinLogCamarero')
         self.WinAñadirComidas = b.get_object('WinAñadirComidas')
@@ -84,8 +92,9 @@ class Restaurante:
         self.winErrores = b.get_object('winErrores')
         self.lblError = b.get_object('lblError')
 
-        # Diccionario
-        # Eventos
+        """
+            # Diccionario de eventos
+        """
         dic = {'on_VentanaPrincipal_destroy': self.btnsal,
                'on_BTNMesa1_clicked': self.clickMesa1,
                'on_BTNMesa2_clicked': self.clickMesa2,
@@ -126,6 +135,9 @@ class Restaurante:
                'on_btnCompresionBBDD_activate': self.on_btnCompresionBBDD_activate,
                }
 
+        """
+            # Metodos llamados nada más abrir el proyecto así como la muestra de la ventana de logeo
+        """
         b.connect_signals(dic)
         self.winErrores.connect('delete-event', lambda w, e: w.hide() or True)
         self.CMBMesas.set_sensitive(False)
@@ -140,9 +152,10 @@ class Restaurante:
         self.venprincipal.show()
         self.WinLogCamarero.show()
 
-        # Cargamos el tema oscuro para nuestra app
-
     def set_style(self):
+        """
+            # Cargamos el tema oscuro para nuestra app
+        """
         provider = Gtk.CssProvider()
         provider.load_from_path(join(WHERE_AM_I, 'gtk.css'))
         screen = Gdk.Display.get_default_screen(Gdk.Display.get_default())
@@ -153,37 +166,70 @@ class Restaurante:
         )
 
     def btnsal(self, data=None):
+        """
+            # Accion para salir del proyecto
+        """
         Gtk.main_quit()
 
     def btnLog(self, data=None):
+        """
+            # Comprueba que se a logueado correctamente y si es así cierra la ventana de login
+        """
         BBDD.comprobarUser(self.etUser.get_text(), self.etPass.get_text(), self.WinLogCamarero)
         self.nombreCamarero = self.etUser.get_text()
 
     def on_btnSobre_activate(self, data=None):
+        """
+            # Accion para abrir la ventana sobre
+        """
         self.winSobre.show()
 
     def on_btnSalirSobre_clicked(self, data=None):
+        """
+            # Accion para cerrar la ventana sobre
+        """
         self.winSobre.hide()
 
     def on_winErrores(self, data=None):
+        """
+            # Accion para abrir la ventana de error
+        """
         self.winErrores.show()
 
     def on_winErrores_destroy(self, data=None):
+        """
+            # Accion para cerrar la ventana de error
+        """
         self.winErrores.hide()
 
     def btnSalirAñadir(self, data=None):
+        """
+            # Accion para cerrar la ventana de añadir comida
+        """
         self.WinAñadirComidas.hide()
 
     def WinAñadirComida(self, data=None):
+        """
+            # Accion para abrir la ventana de añadir comida
+        """
         self.WinAñadirComidas.show()
 
     def ventanaAñadirCLiente(self, data=None):
+        """
+            # Accion para abrir la ventana de añadir cliente
+        """
         self.WinAñadirCliente.show()
 
     def onSalirAñadirCliente(self, data=None):
+        """
+            # Accion para cerrar la ventana de añadir cliente
+        """
         self.WinAñadirCliente.hide()
 
     def ADDComida(self, data=None):
+        """
+            # Accion para guardar la comida escrita en la ventana añadir comida
+        """
         BBDD.añadirComida(self.etNombrePlato.get_text(), self.etPrecioPlato.get_text(), self.WinAñadirComidas)
         self.CMBComidas.remove_all()
         BBDD.CargarCMBComida(self.CMBComidas)
@@ -191,54 +237,91 @@ class Restaurante:
         self.etPrecioPlato.set_text("")
 
     def clickMesa1(self, witget, data=None):
+        """
+            # Accion para seleccionar una mesa en el menu inicio
+            # Activa los botones de realizar pago y el de vaciar mesa y desactiva el de ocupar esa misma mesa
+        """
         self.BTNOcuparMesa.set_sensitive(True)
         self.BTNRealizarPago.set_sensitive(False)
         self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(1)
 
     def clickMesa2(self, witget, data=None):
+        """
+            # Accion para seleccionar una mesa en el menu inicio
+            # Activa los botones de realizar pago y el de vaciar mesa y desactiva el de ocupar esa misma mesa
+        """
         self.BTNOcuparMesa.set_sensitive(True)
         self.BTNRealizarPago.set_sensitive(False)
         self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(2)
 
     def clickMesa3(self, witget, data=None):
+        """
+            # Accion para seleccionar una mesa en el menu inicio
+            # Activa los botones de realizar pago y el de vaciar mesa y desactiva el de ocupar esa misma mesa
+        """
         self.BTNOcuparMesa.set_sensitive(True)
         self.BTNRealizarPago.set_sensitive(False)
         self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(3)
 
     def clickMesa4(self, witget, data=None):
+        """
+            # Accion para seleccionar una mesa en el menu inicio
+            # Activa los botones de realizar pago y el de vaciar mesa y desactiva el de ocupar esa misma mesa
+        """
         self.BTNOcuparMesa.set_sensitive(True)
         self.BTNRealizarPago.set_sensitive(False)
         self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(4)
 
     def clickMesa5(self, witget, data=None):
+        """
+            # Accion para seleccionar una mesa en el menu inicio
+            # Activa los botones de realizar pago y el de vaciar mesa y desactiva el de ocupar esa misma mesa
+        """
         self.BTNOcuparMesa.set_sensitive(True)
         self.BTNRealizarPago.set_sensitive(False)
         self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(5)
 
     def clickMesa6(self, witget, data=None):
+        """
+            # Accion para seleccionar una mesa en el menu inicio
+            # Activa los botones de realizar pago y el de vaciar mesa y desactiva el de ocupar esa misma mesa
+        """
         self.BTNOcuparMesa.set_sensitive(True)
         self.BTNRealizarPago.set_sensitive(False)
         self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(6)
 
     def clickMesa7(self, witget, data=None):
+        """
+            # Accion para seleccionar una mesa en el menu inicio
+            # Activa los botones de realizar pago y el de vaciar mesa y desactiva el de ocupar esa misma mesa
+        """
         self.BTNOcuparMesa.set_sensitive(True)
         self.BTNRealizarPago.set_sensitive(False)
         self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(7)
 
     def clickMesa8(self, witget, data=None):
+        """
+            # Accion para seleccionar una mesa en el menu inicio
+            # Activa los botones de realizar pago y el de vaciar mesa y desactiva el de ocupar esa misma mesa
+        """
         self.BTNOcuparMesa.set_sensitive(True)
         self.BTNRealizarPago.set_sensitive(False)
         self.BTNVaciarMesa.set_sensitive(False)
         self.CMBMesas.set_active(8)
 
     def OcuparMesa(self, witget, data=None):
+        """
+            # Accion para ocupar una mesa seleccionada
+            # Cambia la imagen de la mesa para que aparezca ocupada y la carga en la lista de mesas ocupadas
+            # Crea la factura para esa mesa, aunque vacia
+        """
         if self.CMBMesas.get_active_text() == "Escoge una mesa":
             print("ERROR: Selecciona una Mesa")
         else:
@@ -303,6 +386,10 @@ class Restaurante:
                             self.BTNMesa8)
 
     def SeleccionarMesa(self, witget, data=None):
+        """
+            # Accion al seleccionar una mesa en la lista de mesas ocupadas de inicio
+            # Se cargan todos los datos de esa mesa en las otras pestañas, listviews y combo boxs
+        """
         model, iter = self.treeMesas.get_selection().get_selected()
 
         if iter != None:
@@ -319,6 +406,10 @@ class Restaurante:
             self.BTNVaciarMesa.set_sensitive(True)
 
     def VaciarMesa(self, witget, data=None):
+        """
+            # Accion para desocupar una mesa
+            # Si la mesa que se queire desocupar tiene una factura con servicios añadidos a ella no se puede vaciar, se tiene que pagar
+        """
         model, iter = self.treeMesas.get_selection().get_selected()
 
         idMesa = model.get_value(iter, 0)
@@ -334,7 +425,9 @@ class Restaurante:
                                   self.BTNMesa8)
 
     def comprobarMesa(self, idMesa):
-
+        """
+            # Accion de comprobacion de si la mesa tiene servicios asignados
+        """
         veremos = BBDD.ComprobarMesaServicios(idMesa)
         if veremos != 0:
             self.winErrores.show()
@@ -344,7 +437,9 @@ class Restaurante:
             return False
 
     def VaciarMesaPagada(self, witget, data=None):
-
+        """
+            # Accion para vaciar una mesa una vez se a realizado el pago de la factura
+        """
         idMesa = self.CMBMesaFactura.get_active()
         BBDD.vaciarMesa(idMesa)
         BBDD.cargaMesasInicio(self.ListaMesas, self.treeMesas, self.image1, self.image2, self.image3, self.image4,
@@ -353,7 +448,9 @@ class Restaurante:
                               self.BTNMesa8)
 
     def on_BTNAñadirComanda_clicked(self, witget, data=None):
-
+        """
+            # Accion para añadir una comanda a una factura de una mesa seleccionada
+        """
         idmesa = self.CMBMesasServicios.get_active()
         nombreServicio = self.CMBComidas.get_active_text()
         cantidad = self.etCantidadComida.get_text()
@@ -394,6 +491,9 @@ class Restaurante:
             BBDD.CargaServiciosMesaNormal(self.ListaComandas, self.treeServicios, idMesa)
 
     def on_BTNCancelarComanda_clicked(self, witget, data=None):
+        """
+            # Accion para cancelar una comanda de una factura de una mesa seleccionada
+        """
         model, iter = self.treeServicios.get_selection().get_selected()
 
         idFactura = model.get_value(iter, 0)
@@ -420,14 +520,23 @@ class Restaurante:
         BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa)
 
     def on_BTNRealizarFactura_clicked(self, witget, data=None):
+        """
+            # Accion que nos transporta a la pestaña de facturas
+        """
         self.notebook.set_current_page(2)
 
     def on_cmbProvincia_changed(self, witget, data=None):
+        """
+            # Accion para cargar los municipios de una provincia seleccionada
+        """
         self.cmbCiudad.remove_all()
         nombre = self.cmbProvincia.get_active_text()
         BBDD2.CargarMunicipios(self.cmbCiudad, nombre)
 
     def on_btnAgregarCliente_clicked(self, witget, data=None):
+        """
+            # Accion para añadir un cliente que estamos intentando registrar
+        """
         nombre = self.edNombre.get_text()
         apellidos = self.edApellidos.get_text()
         direcc = self.edDireccion.get_text()
@@ -464,7 +573,9 @@ class Restaurante:
             self.WinAñadirCliente.hide()
 
     def validoDNI(self, dni):
-
+        """
+            # Accion que comprueba quen el dni introducido es válido
+        """
         tabla = "TRWAGMYFPDXBNJZSQVHLCKE"
         dig_ext = "XYZ"
         reemp_dig_ext = {'X': '0', 'Y': '1', 'Z': '2'}
@@ -480,6 +591,9 @@ class Restaurante:
         return False
 
     def on_btnModificarCliente_clicked(self, witget, data=None):
+        """
+            # Accion que borra a un cliente de nuestra bbdd
+        """
         model, iter = self.treeClientes.get_selection().get_selected()
 
         if iter == None:
@@ -492,6 +606,9 @@ class Restaurante:
             BBDD.CargarClientes(self.listClientes, self.treeClientes)
 
     def on_btnGenerarFactura_clicked(self, witget, data=None):
+        """
+            # Accion que genera el ticket de una factura seleccionada, de un cliente seleccionado, que pone la factura como pagada y libera la mesa.
+        """
         model1, iter1 = self.treeClientes.get_selection().get_selected()
         model2, iter2 = self.treeFactuMesas.get_selection().get_selected()
 
@@ -521,12 +638,18 @@ class Restaurante:
                 Informe.factura(idfactu,dni)
 
     def on_CMBMesaFactura_changed(self, witget, data=None):
+        """
+            # Accion para cuando cambiamos entre las mesas, que nos cambie las facturas de esas mesas
+        """
         idMesa = self.CMBMesaFactura.get_active()
         self.CMBMesas.set_active(idMesa)
         self.CMBMesasServicios.set_active(idMesa)
         BBDD.CargarFacturasMesa(self.listFactuMesa, self.treeFactuMesas, idMesa)
 
     def on_treeFactuMesas_cursor_changed(self, witget, data=None):
+        """
+            # Accion para que nos carge los servicios de cualquier factura, no solo de las mesas ocupadas actualmente
+        """
         model2, iter2 = self.treeFactuMesas.get_selection().get_selected()
         idMesa = self.CMBMesaFactura.get_active()
 
@@ -535,6 +658,9 @@ class Restaurante:
             BBDD.CargaServiciosMesa(self.ListaComandas, self.treeServicios, idMesa, idfactu)
 
     def on_btnCompresionBBDD_activate(self, witget, data=None):
+        """
+            # Accion que nos comprime la BBDD para tener un Backup de seguridad
+        """
 
         if not os.path.exists('/home/' + getpass.getuser() + '/copias'):
             os.mkdir('/home/' + getpass.getuser() + '/copias', mode=0o777, dir_fd=None)

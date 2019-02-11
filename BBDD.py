@@ -3,6 +3,9 @@ import datetime
 
 from gi.repository import Gtk
 
+"""
+    # Accion que conecta con la BBDD nada mas abrir el programa
+"""
 try:
     bbdd = 'dataBaseRestaurante'
     conex = sqlite3.connect(bbdd)
@@ -14,6 +17,9 @@ except sqlite3.OperationalError as e:
 
 
 def cerrarConexion():
+    """
+        # Accion que cierra la bbdd una vez cierra el programa
+    """
     try:
         conex.commit()
         conex.close()
@@ -23,6 +29,9 @@ def cerrarConexion():
 
 
 def altaMesa(mesa):
+    """
+        # Accion que da de alta una mesa
+    """
     try:
         cur.execute("INSERT INTO MESA(Idmesa,MaxComensales) values(?,?)", mesa)
         conex.commit()
@@ -32,6 +41,9 @@ def altaMesa(mesa):
 
 
 def cargaMesas(ListaMesas, treeMesas, mesa1, mesa2, mesa3, mesa4, mesa5, mesa6, mesa7, mesa8):
+    """
+        # Accion que inicializa todas las mesas al comienzo del programa
+    """
     try:
         ListaMesas.clear()
         cur.execute("SELECT * FROM Mesa")
@@ -59,12 +71,18 @@ def cargaMesas(ListaMesas, treeMesas, mesa1, mesa2, mesa3, mesa4, mesa5, mesa6, 
 
 
 def CargaMesas(ListaMesas, treeMesas, fila):
+    """
+        # Accion que conecta las mesas
+    """
     ListaMesas.append(fila)
     treeMesas.show()
 
 
 def cargaMesasInicio(ListaMesas, treeMesas, image1, image2, image3, image4, image5, image6, image7, image8, mesa1,
                      mesa2, mesa3, mesa4, mesa5, mesa6, mesa7, mesa8):
+    """
+          # Accion que carga las mesas una vez abierto el programa, para saber cuales están ocupadas o no
+      """
     try:
         ListaMesas.clear()
         image1.set_from_file("img/MesasIndividiales3.png");
@@ -117,6 +135,9 @@ def cargaMesasInicio(ListaMesas, treeMesas, image1, image2, image3, image4, imag
 
 
 def vaciarMesa(idMesa):
+    """
+        # Accion que vacia una mesa de la BBDD, quitando su factura de la BBDD
+    """
     try:
         cur.execute("DELETE FROM Mesa "
                     "where (Idmesa=?)", (idMesa,))
@@ -127,6 +148,9 @@ def vaciarMesa(idMesa):
 
 
 def comprobarUser(usuario, contraseña, ventana):
+    """
+        # Accion que comprueba que hemos introducido bien las credenciales al logearnos
+    """
     try:
         cur.execute("SELECT * FROM Camarero")
         cursor = cur.fetchall()
@@ -140,6 +164,9 @@ def comprobarUser(usuario, contraseña, ventana):
 
 
 def añadirComida(NombPlato, PrecioPlato, ventana):
+    """
+        # Accion que añade la comida a la BBDD
+    """
     fila = (NombPlato, PrecioPlato)
 
     try:
@@ -172,6 +199,9 @@ def añadirComida(NombPlato, PrecioPlato, ventana):
 
 
 def CargarCMBComida(CMBComidas):
+    """
+        # Accion que carga las comidas en el Combo box
+    """
     i = 0
     cur.execute("SELECT * FROM Servicio")
     row = cur.fetchone()
@@ -189,6 +219,9 @@ def CargarCMBComida(CMBComidas):
 
 
 def crearFactura(mesa, usuario):
+    """
+        # Accion que crea la factura una vez ocupamos la mesa
+    """
     try:
         cur.execute("SELECT * FROM Camarero")
         cursor = cur.fetchall()
@@ -209,6 +242,9 @@ def crearFactura(mesa, usuario):
         conex.rollback()
 
 def borrarFactura(idMesa):
+    """
+        # Accion que borra la factura una vez vaciamos la mesa
+    """
     try:
         cur.execute("DELETE FROM FACTURA "
                     "where (Idmesa=?)", (idMesa,))
@@ -218,6 +254,9 @@ def borrarFactura(idMesa):
         conex.rollback()
 
 def AñadirServicioFacturaLista(idmesa,nombreServicio,cantidad):
+    """
+        # Accion que añade una comanda a una linea de factura existente
+    """
     try:
         cur.execute("SELECT * FROM FACTURA WHERE (Idmesa=?)",(idmesa,))
         cursor = cur.fetchall()
@@ -245,6 +284,9 @@ def AñadirServicioFacturaLista(idmesa,nombreServicio,cantidad):
         conex.rollback()
 
 def CargaServiciosMesaNormal(ListaComandas,treeServicios,idMesa):
+    """
+        # Accion que carga los servicios de cualquier mesa, da igual si está ocupada o no
+    """
 
     try:
         cur.execute("SELECT max(idfactura) from factura where idmesa="+str(idMesa)+"")
@@ -265,6 +307,9 @@ def CargaServiciosMesaNormal(ListaComandas,treeServicios,idMesa):
         print(e)
 
 def CargaServiciosMesa(ListaComandas,treeServicios,idMesa,idFactu):
+    """
+        # Accion que carga los servicios de una mesa ocupada ahora mismo
+    """
 
     try:
         ListaComandas.clear()
@@ -277,10 +322,16 @@ def CargaServiciosMesa(ListaComandas,treeServicios,idMesa,idFactu):
 
 
 def CargarServicioLista(ListaComandas, treeServicios, fila):
+    """
+        # Accion que actualiza la vista
+    """
     ListaComandas.append(fila)
     treeServicios.show()
 
 def borrarServicio(idServicio, idFactura):
+    """
+        # Accion que da de baja una comanda de un servicio
+    """
     try:
         cur.execute("DELETE FROM LineaFactura "
                     "where (IdServicio=?) and (IdFactura=?)", (idServicio,idFactura))
@@ -290,6 +341,9 @@ def borrarServicio(idServicio, idFactura):
         conex.rollback()
 
 def CargarFacturasMesa(ListaFacturasMesa,treeFacturaMesa,idMesa):
+    """
+        # Accion que carga las factura de una mesa en especifico
+    """
     try:
         ListaFacturasMesa.clear()
         cur.execute("SELECT IDCamarero, IDFactura, fecha, Pagada from Factura where idmesa = "+str(idMesa)+";")
@@ -300,11 +354,17 @@ def CargarFacturasMesa(ListaFacturasMesa,treeFacturaMesa,idMesa):
         print(e)
 
 def CargaFacturasMesa(ListaFacturasMesa,treeFacturaMesa,fila):
+    """
+         # Accion que actualiza la vista
+    """
     ListaFacturasMesa.append(fila)
     treeFacturaMesa.show()
 
 
 def CargarClientes(listaClientes,treeclientes):
+    """
+        # Accion que carga los clientes de la BBDD
+    """
     try:
         listaClientes.clear()
         cur.execute("SELECT * from cliente")
@@ -316,11 +376,17 @@ def CargarClientes(listaClientes,treeclientes):
 
 
 def CargaClientes(listaClientes, treeclientes, fila):
+    """
+        # Accion que actualiza la vista
+    """
     listaClientes.append(fila)
     treeclientes.show()
 
 
 def guardarCliente(dni, nombre, apellidos, direcc, provincia, ciudad):
+    """
+        # Accion que guarda un nuevo cliente en la BBDD
+    """
     fila =dni,apellidos,nombre,direcc,provincia,ciudad
     try:
         cur.execute("INSERT INTO CLIENTE(DNI,APELLIDOS,NOMBRE,DIRECCION,PROVINCIA,CIUDAD) values(?,?,?,?,?,?)", fila)
@@ -331,6 +397,9 @@ def guardarCliente(dni, nombre, apellidos, direcc, provincia, ciudad):
 
 
 def BorrarCliente(dni):
+    """
+        # Accion que borra un cliente de la BBDD
+    """
     try:
         cur.execute("DELETE FROM CLIENTE "
                     "where (DNI=?)", (dni,))
@@ -341,6 +410,9 @@ def BorrarCliente(dni):
 
 
 def AñadirClienteFactura(dni,idf):
+    """
+        # Accion que añade un cliente a una factura
+    """
     try:
         cur.execute("UPDATE FACTURA set DniCli='"+str(dni)+"',Pagada='Si' WHERE Pagada='No' AND IdFactura="+str(idf)+"")
         conex.commit()
@@ -349,6 +421,9 @@ def AñadirClienteFactura(dni,idf):
         conex.rollback()
 
 def ComprobarMesaServicios(idmesa):
+    """
+        # Accion que comprueba la cantidad de servicios de una meas
+    """
 
     try:
         cur.execute("SELECT idfactura from factura where idmesa="+str(idmesa)+" and Pagada = 'No'")
