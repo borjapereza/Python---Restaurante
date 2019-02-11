@@ -1,7 +1,7 @@
 # Python---Restaurante
 # Python app
 
-<img src="docs_resources/inicio2.png" width="280"/> <img src="docs_resources/servicios2.png" width="280" /> <img src="docs_resources/pagar2.png" width="280"/> 
+<img src="docs_resources/inicio2.png" width="280"/> <img src="docs_resources/servicio2.png" width="280" /> <img src="docs_resources/pagar2.png" width="280"/> 
  
  
 <img src="docs_resources/login2.png"/> 
