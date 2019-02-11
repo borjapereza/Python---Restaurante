@@ -434,33 +434,7 @@
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="BTNEnterLog">
-                <property name="label" translatable="yes">ENTER</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <signal name="clicked" handler="on_BTNEnterLog_clicked" swapped="no"/>
-                <accelerator key="Return" signal="clicked"/>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="BTNSalirLog">
-                <property name="label" translatable="yes">EXIT</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <signal name="clicked" handler="on_BTNSalirLog_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>
@@ -556,6 +530,38 @@ Realfood</property>
               <packing>
                 <property name="x">300</property>
                 <property name="y">95</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="BTNSalirLog">
+                <property name="label" translatable="yes">EXIT</property>
+                <property name="width_request">100</property>
+                <property name="height_request">36</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_BTNSalirLog_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="x">670</property>
+                <property name="y">119</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="BTNEnterLog">
+                <property name="label" translatable="yes">ENTER</property>
+                <property name="width_request">100</property>
+                <property name="height_request">36</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="margin_bottom">20</property>
+                <signal name="clicked" handler="on_BTNEnterLog_clicked" swapped="no"/>
+                <accelerator key="Return" signal="clicked"/>
+              </object>
+              <packing>
+                <property name="x">560</property>
+                <property name="y">119</property>
               </packing>
             </child>
           </object>
@@ -1476,7 +1482,7 @@ y márcala como ocupada. </property>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">611</property>
+                    <property name="x">630</property>
                     <property name="y">310</property>
                   </packing>
                 </child>
@@ -1546,8 +1552,8 @@ Cliente</property>
                 </child>
                 <child>
                   <object class="GtkScrolledWindow">
-                    <property name="width_request">550</property>
-                    <property name="height_request">443</property>
+                    <property name="width_request">580</property>
+                    <property name="height_request">510</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hexpand">True</property>
@@ -1638,14 +1644,14 @@ Cliente</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="x">611</property>
+                    <property name="x">630</property>
                     <property name="y">340</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkScrolledWindow">
-                    <property name="width_request">550</property>
-                    <property name="height_request">443</property>
+                    <property name="width_request">580</property>
+                    <property name="height_request">510</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hexpand">True</property>
