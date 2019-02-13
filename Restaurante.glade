@@ -47,6 +47,9 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="margin_right">10</property>
+                <property name="margin_top">10</property>
+                <property name="margin_bottom">10</property>
                 <signal name="clicked" handler="on_btnAgregarCliente_clicked" swapped="no"/>
               </object>
               <packing>
@@ -61,6 +64,9 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="margin_right">10</property>
+                <property name="margin_top">10</property>
+                <property name="margin_bottom">10</property>
                 <signal name="clicked" handler="on_btnCancelarCliente_clicked" swapped="no"/>
               </object>
               <packing>
@@ -304,6 +310,9 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="margin_right">10</property>
+                <property name="margin_top">10</property>
+                <property name="margin_bottom">10</property>
                 <signal name="clicked" handler="on_BTNAñadir_clicked" swapped="no"/>
               </object>
               <packing>
@@ -318,6 +327,9 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="margin_right">10</property>
+                <property name="margin_top">10</property>
+                <property name="margin_bottom">10</property>
                 <signal name="clicked" handler="on_BTNSalirAñadir_clicked" swapped="no"/>
               </object>
               <packing>
@@ -417,6 +429,7 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Log Restaurante</property>
     <property name="modal">True</property>
+    <property name="icon">img/foodtick.png</property>
     <property name="type_hint">dialog</property>
     <signal name="destroy" handler="on_WinLogCamarero_destroy" swapped="no"/>
     <child>
@@ -662,6 +675,7 @@ Realfood</property>
     <property name="title" translatable="yes">Restaurante</property>
     <property name="window_position">center</property>
     <property name="default_width">0</property>
+    <property name="icon">img/foodtick.png</property>
     <signal name="destroy" handler="on_VentanaPrincipal_destroy" swapped="no"/>
     <child>
       <placeholder/>
@@ -1784,6 +1798,7 @@ Cliente</property>
               <object class="GtkLabel" id="lblError">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_right">15</property>
                 <property name="label" translatable="yes">label</property>
               </object>
               <packing>
@@ -1795,11 +1810,13 @@ Cliente</property>
             <child>
               <object class="GtkButton">
                 <property name="label" translatable="yes">Exit</property>
-                <property name="width_request">25</property>
+                <property name="width_request">15</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="margin_right">6</property>
+                <property name="margin_right">10</property>
+                <property name="margin_top">10</property>
+                <property name="margin_bottom">10</property>
                 <signal name="clicked" handler="on_winErrores_destroy" swapped="no"/>
               </object>
               <packing>
@@ -1874,6 +1891,9 @@ Flaticon</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="margin_right">10</property>
+                <property name="margin_top">10</property>
+                <property name="margin_bottom">10</property>
                 <signal name="clicked" handler="on_btnSalirSobre_clicked" swapped="no"/>
               </object>
               <packing>

@@ -1,0 +1,9 @@
+Restaurante.Informe	Restaurante.Informe-module.html
+Restaurante.Informe.conexion	Restaurante.Informe-module.html#conexion
+Restaurante.Informe.cerrarConexion	Restaurante.Informe-module.html#cerrarConexion
+Restaurante.Informe.cur	Restaurante.Informe-module.html#cur
+Restaurante.Informe.pie	Restaurante.Informe-module.html#pie
+Restaurante.Informe.factura	Restaurante.Informe-module.html#factura
+Restaurante.Informe.bbdd	Restaurante.Informe-module.html#bbdd
+Restaurante.Informe.cabecera	Restaurante.Informe-module.html#cabecera
+Restaurante.Informe.cliente	Restaurante.Informe-module.html#cliente
