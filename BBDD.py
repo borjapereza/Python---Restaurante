@@ -6,6 +6,7 @@ from gi.repository import Gtk
 """
     # Accion que conecta con la BBDD nada mas abrir el programa
 """
+PENE PENE PENE PENE PENE PENE
 try:
     bbdd = 'dataBaseRestaurante'
     conex = sqlite3.connect(bbdd)
